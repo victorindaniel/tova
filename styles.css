@@ -211,7 +211,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .bank-popup-close:hover { background: #E9E7E2; }
 .bank-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .bank-item { padding: 20px; border: 1px solid #EDEDED; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-.bank-item:hover { border-color: #000000; background: #FBFBFA; }
+.bank-item:hover { border-color: #000000; background: #F7F6F5; }
 .bank-logo { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 12px; color: #ffffff; }
 .bank-logo.swedbank { background: #fb4f00; }
 .bank-logo.nordea { background: #00005e; }
@@ -230,7 +230,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .bank-back:hover { color: #1a1a1a; }
 .account-list { display: flex; flex-direction: column; gap: 12px; }
 .account-item { padding: 16px 20px; border: 1px solid #EDEDED; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.account-item:hover { border-color: #999; background: #FBFBFA; }
+.account-item:hover { border-color: #999; background: #F7F6F5; }
 .account-info { display: flex; flex-direction: column; gap: 4px; flex: 1; }
 .account-name { font-size: 15px; font-weight: 500; color: #1a1a1a; }
 .account-number { font-size: 13px; color: #666; }
@@ -314,7 +314,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .package-sidebar-subtitle { font-size: 14px; color: #666; line-height: 1.5; }
 .package-sidebar-section { margin-bottom: 32px; }
 .package-sidebar-section-title { font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 16px; }
-.package-sidebar-allocation { display: flex; align-items: center; gap: 16px; padding: 20px; background: #FBFBFA; border-radius: 12px; margin-bottom: 16px; }
+.package-sidebar-allocation { display: flex; align-items: center; gap: 16px; padding: 20px; background: #F7F6F5; border-radius: 12px; margin-bottom: 16px; }
 .package-sidebar-pie { width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0; }
 .package-sidebar-breakdown { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .package-sidebar-breakdown-item { display: flex; flex-direction: column; gap: 4px; margin-bottom: 0; font-size: 14px; }
@@ -322,14 +322,14 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .package-sidebar-breakdown-label { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
 .package-sidebar-breakdown-value { font-weight: 600; color: #1a1a1a; font-size: 16px; }
 .package-sidebar-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.package-sidebar-detail { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; padding: 16px; background: #FBFBFA; border-radius: 12px; }
+.package-sidebar-detail { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; padding: 16px; background: #F7F6F5; border-radius: 12px; }
 .package-sidebar-detail-label { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
 .package-sidebar-detail-value { font-size: 18px; font-weight: 600; color: #1a1a1a; }
 .package-sidebar-button { padding: 20px 32px; background: #ffffff; border-top: 1px solid #EDEDED; flex-shrink: 0; }
 .package-sidebar-button button { width: 100%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 .package-sidebar-button button:hover { background: #333; }
 .package-sidebar-holdings { display: flex; flex-direction: column; gap: 8px; }
-.package-sidebar-holding { display: flex; align-items: center; gap: 12px; padding: 12px; background: #FBFBFA; border-radius: 8px; }
+.package-sidebar-holding { display: flex; align-items: center; gap: 12px; padding: 12px; background: #F7F6F5; border-radius: 8px; }
 .package-sidebar-holding-flag { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .package-sidebar-holding-info { flex: 1; min-width: 0; }
 .package-sidebar-holding-name { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 2px; }
@@ -466,8 +466,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .analysis-spinner { display: flex; justify-content: flex-start; align-items: center; padding: 20px 0; margin-top: 16px; }
 .typing-star { width: 20px; height: 20px; animation: sparkle 2s ease-in-out infinite; color: #1a1a1a; }
 .chat-area.chat-active { justify-content: flex-start; padding-bottom: 200px; position: relative; }
-.chat-area.chat-active .input-container.sticky { position: fixed; left: 50%; margin-left: calc((110px + 300px) / 2); transform: translateX(-50%); bottom: 24px; transition: margin-left 0.3s ease; margin-bottom: 0; }
-.left-sidebar:not(.collapsed) ~ .left-panel ~ .main-content .chat-area.chat-active .input-container.sticky { margin-left: calc((300px + 300px) / 2); }
+.chat-area.chat-active .input-container.sticky { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); width: 768px; max-width: 768px; transition: all 0.3s ease; margin-bottom: 0; margin-left: calc((88px + 300px + 24px) / 2); }
+.left-sidebar:not(.collapsed) ~ .main-content .chat-area.chat-active .input-container.sticky { margin-left: calc((300px + 300px + 24px) / 2); }
 .chat-area.chat-active::after { content: ''; position: fixed; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to bottom, rgba(251, 251, 250, 0) 0%, rgba(251, 251, 250, 1) 32px, rgba(251, 251, 250, 1) 100%); pointer-events: none; z-index: 5; }
 .input-container.sticky { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); width: 768px; max-width: 768px; margin: 0; z-index: 10; background: transparent; padding-top: 64px; padding-bottom: 0; margin-bottom: 0; }
 
@@ -496,7 +496,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .chat-message .funds-list { max-width: 70%; }
 .fund-item { display: grid; grid-template-columns: 40px 2fr 1fr 1fr 24px; padding: 16px 20px; align-items: center; gap: 16px; border-bottom: 1px solid #EDEDED; transition: background 0.2s; cursor: pointer; }
 .fund-item:last-child { border-bottom: none; }
-.fund-item:hover { background: #FBFBFA; }
+.fund-item:hover { background: #F7F6F5; }
 .fund-rank { font-size: 14px; font-weight: 500; color: #999; }
 .fund-name { display: flex; align-items: center; gap: 12px; }
 .fund-flag { width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
@@ -565,7 +565,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
     width: 100%; 
     margin: 0 auto; 
     min-height: calc(100vh - 98px); 
-    background: #FBFBFA; 
+    background: #F7F6F5; 
     color: white; 
 }
 
@@ -1228,7 +1228,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .isk-selected-category-description { font-size: 12px; color: #666; line-height: 1.4; }
 .category-grid { display: flex; flex-direction: column; gap: 12px; }
 .category-item { padding: 16px; border: 1px solid #EDEDED; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 16px; width: 100%; }
-.category-item:hover { border-color: #000000; background: #FBFBFA; }
+.category-item:hover { border-color: #000000; background: #F7F6F5; }
 .category-item.selected { border-color: #000000; background: #F5F4F2; }
 .category-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #F5F4F2; }
 .category-icon svg { width: 20px; height: 20px; stroke: #1a1a1a; }
@@ -1269,7 +1269,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .isk-success-actions-title { font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 16px; text-align: left; }
 .isk-success-actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
 .isk-success-action-item { padding: 16px; border: 1px solid #EDEDED; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 16px; width: 100%; text-align: left; background: #ffffff; }
-.isk-success-action-item:hover { border-color: #000000; background: #FBFBFA; }
+.isk-success-action-item:hover { border-color: #000000; background: #F7F6F5; }
 .isk-success-action-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: #F5F4F2; }
 .isk-success-action-icon svg { width: 20px; height: 20px; stroke: #1a1a1a; }
 .isk-success-action-info { flex: 1; }
