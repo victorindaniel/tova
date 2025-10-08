@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Investera med Tova AI</title>
+
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body>             
+    <div class="left-sidebar collapsed">
+        <div class="sidebar-logo">
+            <span class="sidebar-logo-text">tova</span>
+            <span class="sidebar-badge">Market</span>
+            <span class="sidebar-logo-collapsed">t</span>
+        </div>
+        
+        <div class="sidebar-nav">
+            <div class="nav-item-sidebar active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M2 12h20M5.64 5.64l12.72 12.72M5.64 18.36l12.72-12.72"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span>Investera med Tova AI</span>
+                <span class="nav-label-collapsed">Investera</span>
+                <span class="nav-tooltip">Investera med Tova AI</span>
+            </div>
+            
+            <div class="sidebar-divider-line"></div>
+            
+            <div class="nav-item-sidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="M7 15h0M2 9.5h20"></path>
+                </svg>
+                <span>Min ekonomi</span>
+                <span class="nav-label-collapsed">Ekonomi</span>
+                <span class="nav-tooltip">Min ekonomi</span>
+            </div>
+            
+            <div class="nav-item-sidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <span>Upptäck</span>
+                <span class="nav-label-collapsed">Upptäck</span>
+                <span class="nav-tooltip">Upptäck</span>
+            </div>
+            
+            <div class="nav-item-sidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+                <span>Tjäna</span>
+                <span class="nav-label-collapsed">Tjäna</span>
+                <span class="nav-tooltip">Tjäna</span>
+            </div>
+            
+            <div class="nav-item-sidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3v18h18"></path>
+                    <path d="M7 16v-6M12 16V8M17 16v-4"></path>
+                    <path d="M14 6l4 4"></path>
+                    <path d="M14 10l4-4"></path>
+                </svg>
+                <span>Marknad</span>
+                <span class="nav-label-collapsed">Marknad</span>
+                <span class="nav-tooltip">Marknad</span>
+            </div>
+            
+            <div class="nav-item-sidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                    <path d="M16.24 7.76A6 6 0 0 1 19 13.28"></path>
+                </svg>
+                <span>Valutakurser</span>
+                <span class="nav-label-collapsed">Valuta</span>
+                <span class="nav-tooltip">Valutakurser</span>
+            </div>
+            
+            <div class="nav-item-sidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                    <path d="M18 14h-8"></path>
+                    <path d="M15 18h-5"></path>
+                    <path d="M10 6h8v4h-8V6Z"></path>
+                </svg>
+                <span>Marknadsnytt</span>
+                <span class="nav-label-collapsed">Nytt</span>
+                <span class="nav-tooltip">Marknadsnytt</span>
+            </div>
+            
+            <div class="sidebar-divider-line"></div>
+            
+            <div class="nav-item-sidebar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Öppna ISK</span>
+                <span class="nav-label-collapsed">ISK</span>
+                <span class="nav-tooltip">Öppna ISK</span>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="nav-item-sidebar" id="minimizeBtn">
+                <svg class="minimize-icon-expanded" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                    <polyline points="8 7 3 12 8 17"></polyline>
+                    <line x1="3" y1="12" x2="15" y2="12"></line>
+                </svg>
+                <svg class="minimize-icon-collapsed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="3" x2="9" y2="21"></line>
+                </svg>
+                <span>Minimera meny</span>
+                <span class="nav-label-collapsed">Meny</span>
+                <span class="nav-tooltip">Minimera meny</span>
+            </div>
+            
+            <div class="sidebar-divider-line"></div>
+            
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar">AV</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name">Anna Vallin</div>
+                    <div class="sidebar-user-plan">Tova Premium</div>
+                </div>
+                <svg class="sidebar-user-dropdown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="balance-display">
+                <div class="balance-label">Tillgängligt saldo</div>
+                <div class="balance-amount">3 751,00 SEK</div>
+            </div>
+            <div class="top-bar-divider"></div>
+            <div class="search-bar">
+                <span class="search-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg></span>
+                <input type="text" class="search-input" id="searchInput" placeholder="Sök på värdepapper, marknader och mer">
+                <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 13px; color: #000000; background: #fff; padding: 6px 8px; border-radius: 8px;" id="cmdKBadge">⌘ + K</span>
+                <button style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: none; background: #F5F4F2; border-radius: 8px; cursor: pointer; display: none; align-items: center; justify-content: center; color: #000000; transition: background-color 0.2s;" id="clearSearchBtn" onmouseover="this.style.backgroundColor='#E9E7E2'" onmouseout="this.style.backgroundColor='#F5F4F2'">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="search-dropdown" id="searchDropdown"></div>
+            </div>
+            <div class="top-bar-actions">
+                <button class="top-bar-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Anslut konto
+                </button>
+                <button class="top-bar-button"><span style="display: inline-block; transform: rotate(90deg);">⇄</span> Överföring</button>
+            </div>
+        </div>
+
+        <div class="search-overlay" id="searchOverlay"></div>
+
+        <div class="content-wrapper">
+            <div class="left-panel">
+                <div class="panel-header">
+                    <h1 class="panel-title">Investera med Tova AI</h1>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-item"><div class="nav-icon blue">F</div><div class="nav-text">Investera i fonder</div></div>
+                    <div class="nav-item"><div class="nav-icon purple">P</div><div class="nav-text">Tova-podden</div></div>
+                    <div class="nav-item"><div class="nav-icon orange">A</div><div class="nav-text">Köp aktier</div></div>
+                </div>
+                <div class="section-header" data-section="today">
+                    <span class="section-title small">Idag</span>
+                    <span class="section-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"></polyline></svg></span>
+                </div>
+                <div class="section-list" data-section-content="today"></div>
+                <div class="section-header" data-section="yesterday">
+                    <span class="section-title small">Igår</span>
+                    <span class="section-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"></polyline></svg></span>
+                </div>
+                <div class="section-list" data-section-content="yesterday">
+                    <div class="section-list-item">Jag vill starta ett månadssparande</div>
+                    <div class="section-list-item">Vilka är Tovas topp 10 köpta aktier...</div>
+                    <div class="section-list-item">Hur fungerar Tova AI</div>
+                    <div class="section-list-item">Vilka fonder ska jag välja för lång spar...</div>
+                </div>
+                <div class="ai-fund-box">
+                    <div class="ai-fund-title">Vår AI-drivna fondutforskare</div>
+                    <div class="ai-fund-description">Hitta fonder som passar dina sparmål med hjälp av vår nya AI-drivna fondutforskare.</div>
+                    <button class="ai-fund-button">Så här funkar det</button>
+                </div>
+            </div>
+
+            <div class="chat-area">
+                <div class="home-view" id="homeView">
+                <div style="text-align: center; padding: 100px 0;">
+                    <h2 style="font-size: 24px; color: #666;">Home View</h2>
+                    <p style="color: #999; margin-top: 16px;">Click the home icon in the sidebar to see portfolio content</p>
+                </div>
+            </div>
+
+            <div class="welcome-content" id="welcomeContent">
+                <h2 class="welcome-message">Hur är din dag, Anna?</h2>
+                <div class="input-container">
+                    <div class="chat-input-wrapper">
+                        <textarea class="chat-input" id="chatInput" placeholder="Berätta hur jag kan hjälpa dig" rows="3"></textarea>
+                        <div class="input-actions">
+                            <button class="input-action-btn attach">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <span>Bifoga</span>
+                            </button>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="input-action-btn voice"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button>
+                                <button class="input-action-btn" id="sendButton" disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="help-text">Om du behöver lite hjälp på traven</div>
+                <div class="suggestions-container">
+                    <div class="suggestion-card" data-message="Jag vill starta ett månadssparande">
+                        <svg class="suggestion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <span>Jag vill starta ett månadssparande</span>
+                    </div>
+                    <div class="suggestion-card" data-message="Visa mig Tovas 10 populäraste fonder">
+                        <svg class="suggestion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        <span>Visa mig Tovas 10 populäraste fonder</span>
+                    </div>
+                    <div class="suggestion-card" data-message="Hur mycket ska man spara per månad?">
+                        <svg class="suggestion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z"></path><path d="M2 9v1c0 1.1.9 2 2 2h1"></path><path d="M16 11h0"></path></svg>
+                        <span>Hur mycket ska man spara per månad?</span>
+                    </div>
+                    <div class="suggestion-card" data-message="Visa mig fonder med bäst avkastning på 3 år">
+                        <svg class="suggestion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        <span>Visa mig fonder med bäst avkastning på 3 år</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages"></div>
+
+            <div class="input-container sticky" id="chatInputContainer" style="display: none; width: 768px; max-width: 768px;">
+                <div class="chat-input-wrapper" style="width: 768px; max-width: 768px;">
+                    <textarea class="chat-input" id="chatInputActive" placeholder="Berätta hur jag kan hjälpa dig" rows="3"></textarea>
+                    <div class="input-actions">
+                        <button class="input-action-btn attach">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            <span>Bifoga</span>
+                        </button>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="input-action-btn voice"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg></button>
+                            <button class="input-action-btn" id="sendButtonActive" disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="transfer-overlay" id="transferOverlay">
+        <div class="transfer-popup">
+            <div class="transfer-popup-header">
+                <h2 class="transfer-popup-title">Överföring</h2>
+                <button class="transfer-popup-close" id="closeTransferPopup">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="transfer-tabs">
+                <button class="transfer-tab active" data-tab="topup">Sätt in</button>
+                <button class="transfer-tab" data-tab="payout">Ta ut</button>
+            </div>
+            
+            <div class="transfer-content active" id="topupContent">
+                <div class="transfer-field">
+                    <label class="transfer-label">Välj bankkonto</label>
+                    <select class="transfer-select">
+                        <option>Swedbank **** 1234</option>
+                        <option>Nordea **** 5678</option>
+                        <option>SEB **** 9012</option>
+                    </select>
+                </div>
+                
+                <div class="transfer-field">
+                    <label class="transfer-label">Belopp</label>
+                    <input type="number" class="transfer-input" id="topupAmount" placeholder="0 SEK">
+                </div>
+                
+                <button class="transfer-button" id="topupButton" disabled>Sätt in pengar</button>
+            </div>
+            
+            <div class="transfer-content" id="payoutContent">
+                <div class="transfer-field">
+                    <label class="transfer-label">Välj bankkonto</label>
+                    <select class="transfer-select">
+                        <option>Swedbank **** 1234</option>
+                        <option>Nordea **** 5678</option>
+                        <option>SEB **** 9012</option>
+                    </select>
+                </div>
+                
+                <div class="transfer-field">
+                    <label class="transfer-label">Belopp</label>
+                    <input type="number" class="transfer-input" id="payoutAmount" placeholder="0 SEK">
+                </div>
+                
+                <div class="transfer-info">
+                    Tillgängligt saldo: 3 751,00 SEK<br>
+                    Pengar överförs till ditt bankkonto inom 1-2 bankdagar.
+                </div>
+                
+                <button class="transfer-button" id="payoutButton" disabled>Ta ut pengar</button>
+            </div>
+            
+            <div class="transfer-content transfer-success-view" id="transferSuccessView">
+                <div class="transfer-success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="transfer-success-title" id="transferSuccessTitle">Insättning genomförd!</h3>
+                <p class="transfer-success-amount" id="transferSuccessAmount">5 000 SEK</p>
+                <p class="transfer-success-text" id="transferSuccessText">Pengarna har satts in på ditt Tova-konto och är tillgängliga direkt.</p>
+                <p class="transfer-success-info" id="transferSuccessInfo"></p>
+                <button class="transfer-success-button" id="transferSuccessDone">Klar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bank-overlay" id="bankOverlay">
+        <div class="bank-popup">
+            <div class="bank-popup-header">
+                <div>
+                    <h2 class="bank-popup-title" id="bankPopupTitle">Anslut konto</h2>
+                </div>
+                <button class="bank-popup-close" id="closeBankPopup">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="bank-steps-container">
+                <div class="bank-step active" id="bankSelectStep">
+                <p class="bank-popup-subtitle">Anslut ditt bankkonto för att enkelt sätta in och ta ut pengar från ditt Tova-konto.</p>
+                
+                <div class="bank-list">
+                    <div class="bank-item" data-bank="swedbank" onclick="window.updateBankLogos('SWED', 'swedbank', 'Swedbank')">
+                        <div class="bank-logo swedbank">SWED</div>
+                        <div class="bank-name">Swedbank</div>
+                    </div>
+                    <div class="bank-item" data-bank="nordea" onclick="window.updateBankLogos('NDA', 'nordea', 'Nordea')">
+                        <div class="bank-logo nordea">NDA</div>
+                        <div class="bank-name">Nordea</div>
+                    </div>
+                    <div class="bank-item" data-bank="seb" onclick="window.updateBankLogos('SEB', 'seb', 'SEB')">
+                        <div class="bank-logo seb">SEB</div>
+                        <div class="bank-name">SEB</div>
+                    </div>
+                    <div class="bank-item" data-bank="handelsbanken" onclick="window.updateBankLogos('HB', 'handelsbanken', 'Handelsbanken')">
+                        <div class="bank-logo handelsbanken">HB</div>
+                        <div class="bank-name">Handelsbanken</div>
+                    </div>
+                    <div class="bank-item" data-bank="skandiabanken" onclick="window.updateBankLogos('SB', 'skandiabanken', 'Skandiabanken')">
+                        <div class="bank-logo skandiabanken">SB</div>
+                        <div class="bank-name">Skandiabanken</div>
+                    </div>
+                    <div class="bank-item" data-bank="avanza" onclick="window.updateBankLogos('AV', 'avanza', 'Avanza')">
+                        <div class="bank-logo avanza">AV</div>
+                        <div class="bank-name">Avanza</div>
+                    </div>
+                    <div class="bank-item" data-bank="lansforsakringar" onclick="window.updateBankLogos('LF', 'lansforsakringar', 'Länsförsäkringar')">
+                        <div class="bank-logo lansforsakringar">LF</div>
+                        <div class="bank-name">Länsförsäkringar</div>
+                    </div>
+                    <div class="bank-item" data-bank="ica" onclick="window.updateBankLogos('ICA', 'ica', 'ICA Banken')">
+                        <div class="bank-logo ica">ICA</div>
+                        <div class="bank-name">ICA Banken</div>
+                    </div>
+                    <div class="bank-item" data-bank="other" onclick="window.updateBankLogos('+', 'other', 'Annan bank')">
+                        <div class="bank-logo other">+</div>
+                        <div class="bank-name">Annan bank</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bank-step bank-bankid-view" id="bankBankIdStep">
+                <div class="bank-back" id="backToBanksFromBankId">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span>Tillbaka</span>
+                </div>
+                
+                <div class="bank-bankid-tabs">
+                    <button class="bank-bankid-tab active" id="bankIdMobileTab">Mobilt BankID</button>
+                    <button class="bank-bankid-tab" id="bankIdCardTab">BankID på kort</button>
+                </div>
+                
+                <div id="bankIdMobileContent">
+                    <p class="bank-bankid-instruction">Starta BankID-appen i din mobil eller surfplatta och tryck på Skanna QR-kod.</p>
+                    <div class="bank-bankid-qr" id="bankIdQrContainer">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" fill="white"/>
+                            <g fill="black">
+                                <rect x="20" y="20" width="20" height="20"/>
+                                <rect x="60" y="20" width="20" height="20"/>
+                                <rect x="80" y="20" width="20" height="20"/>
+                                <rect x="100" y="20" width="20" height="20"/>
+                                <rect x="140" y="20" width="20" height="20"/>
+                                <rect x="160" y="20" width="20" height="20"/>
+                                <rect x="20" y="40" width="20" height="20"/>
+                                <rect x="100" y="40" width="20" height="20"/>
+                                <rect x="160" y="40" width="20" height="20"/>
+                                <rect x="20" y="60" width="20" height="20"/>
+                                <rect x="60" y="60" width="20" height="20"/>
+                                <rect x="100" y="60" width="20" height="20"/>
+                                <rect x="120" y="60" width="20" height="20"/>
+                                <rect x="160" y="60" width="20" height="20"/>
+                                <rect x="20" y="80" width="20" height="20"/>
+                                <rect x="60" y="80" width="20" height="20"/>
+                                <rect x="100" y="80" width="20" height="20"/>
+                                <rect x="140" y="80" width="20" height="20"/>
+                                <rect x="160" y="80" width="20" height="20"/>
+                                <rect x="20" y="100" width="20" height="20"/>
+                                <rect x="100" y="100" width="20" height="20"/>
+                                <rect x="120" y="100" width="20" height="20"/>
+                                <rect x="140" y="100" width="20" height="20"/>
+                                <rect x="160" y="100" width="20" height="20"/>
+                                <rect x="60" y="120" width="20" height="20"/>
+                                <rect x="80" y="120" width="20" height="20"/>
+                                <rect x="140" y="120" width="20" height="20"/>
+                                <rect x="20" y="140" width="20" height="20"/>
+                                <rect x="40" y="140" width="20" height="20"/>
+                                <rect x="60" y="140" width="20" height="20"/>
+                                <rect x="80" y="140" width="20" height="20"/>
+                                <rect x="100" y="140" width="20" height="20"/>
+                                <rect x="120" y="140" width="20" height="20"/>
+                                <rect x="140" y="140" width="20" height="20"/>
+                                <rect x="160" y="140" width="20" height="20"/>
+                                <rect x="40" y="160" width="20" height="20"/>
+                                <rect x="80" y="160" width="20" height="20"/>
+                                <rect x="120" y="160" width="20" height="20"/>
+                                <rect x="140" y="160" width="20" height="20"/>
+                            </g>
+                        </svg>
+                    </div>
+                    
+                    <div class="bank-bankid-divider">
+                        <div class="bank-bankid-divider-line"></div>
+                        <span class="bank-bankid-divider-text">eller</span>
+                        <div class="bank-bankid-divider-line"></div>
+                    </div>
+                    
+                    <p class="bank-bankid-alternate">Välj annat sätt att identifiera dig</p>
+                </div>
+                
+                <div class="bank-bankid-card-content" id="bankIdCardContent">
+                    <ol>
+                        <li>Anslut kortläsaren till datorn och klicka på Logga in.</li>
+                        <li>Klicka på Jag identifierar mig i BankID på din dator.</li>
+                        <li>Skriv in din PIN i kortläsaren och tryck på Ok.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="bank-step" id="accountSelectStep">
+                <div class="bank-back" id="backToBanks">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span>Tillbaka</span>
+                </div>
+                
+                <p class="bank-popup-subtitle">Välj vilket konto du vill ansluta till ditt Tova-konto.</p>
+                
+                <div class="account-list" id="accountList">
+                    <div class="account-item" data-account="1">
+                        <div class="account-bank-logo" id="accountLogo1">?</div>
+                        <div class="account-info">
+                            <div class="account-name">Privatkonto</div>
+                            <div class="account-number">**** **** **** 1234</div>
+                        </div>
+                        <div class="account-check"></div>
+                    </div>
+                    <div class="account-item" data-account="2">
+                        <div class="account-bank-logo" id="accountLogo2">?</div>
+                        <div class="account-info">
+                            <div class="account-name">Sparkonto</div>
+                            <div class="account-number">**** **** **** 5678</div>
+                        </div>
+                        <div class="account-check"></div>
+                    </div>
+                    <div class="account-item" data-account="3">
+                        <div class="account-bank-logo" id="accountLogo3">?</div>
+                        <div class="account-info">
+                            <div class="account-name">Lönekonto</div>
+                            <div class="account-number">**** **** **** 9012</div>
+                        </div>
+                        <div class="account-check"></div>
+                    </div>
+                </div>
+                
+                <button class="bank-connect-button" id="connectBankButton" disabled>Anslut konto</button>
+            </div>
+            
+            <div class="bank-step bank-success-view" id="bankSuccessStep">
+                <div class="bank-success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="bank-success-title">Konto anslutet!</h3>
+                <p class="bank-success-text" id="bankSuccessText">Du har nu anslutit ditt Privatkonto till Tova. Du kan börja överföra pengar direkt.</p>
+                <button class="bank-success-button" id="bankSuccessDone">Klar</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ai-carousel-overlay" id="aiCarouselOverlay">
+        <div class="ai-carousel-popup">
+            <button class="ai-carousel-close" id="closeAiCarousel">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="ai-carousel-container">
+                <div class="ai-carousel-slides" id="aiCarouselSlides">
+                    <div class="ai-carousel-slide">
+                        <div class="ai-carousel-image slide1"></div>
+                        <div class="ai-carousel-content">
+                            <h3 class="ai-carousel-title">Smart AI-analys</h3>
+                            <p class="ai-carousel-text">Vår AI analyserar tusentals fonder i realtid och matchar dem mot dina sparmål, risktolerans och tidshorisont. Vi använder avancerad maskininlärning för att hitta de bästa fonderna för just dig.</p>
+                            <div class="ai-carousel-nav">
+                                <button class="ai-carousel-nav-btn" id="aiCarouselPrev" disabled>Föregående</button>
+                                <button class="ai-carousel-nav-btn primary" id="aiCarouselNext">Nästa</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-carousel-slide">
+                        <div class="ai-carousel-image slide2"></div>
+                        <div class="ai-carousel-content">
+                            <h3 class="ai-carousel-title">Personliga rekommendationer</h3>
+                            <p class="ai-carousel-text">Baserat på din ekonomiska situation och dina mål får du skräddarsydda fondförslag. AI:n lär sig av dina val och blir bättre på att rekommendera fonder ju mer du använder tjänsten.</p>
+                            <div class="ai-carousel-nav">
+                                <button class="ai-carousel-nav-btn" id="aiCarouselPrev2">Föregående</button>
+                                <button class="ai-carousel-nav-btn primary" id="aiCarouselNext2">Nästa</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-carousel-slide">
+                        <div class="ai-carousel-image slide3"></div>
+                        <div class="ai-carousel-content">
+                            <h3 class="ai-carousel-title">Kontinuerlig övervakning</h3>
+                            <p class="ai-carousel-text">AI:n arbetar dygnet runt och övervakar dina investeringar. Om marknadsförhållandena ändras eller det finns bättre alternativ får du automatiska notifikationer och förslag på justeringar.</p>
+                            <div class="ai-carousel-nav">
+                                <button class="ai-carousel-nav-btn" id="aiCarouselPrev3">Föregående</button>
+                                <button class="ai-carousel-nav-btn primary" id="aiCarouselDone">Kom igång</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-carousel-bullets">
+                <div class="ai-carousel-bullet active" data-slide="0"></div>
+                <div class="ai-carousel-bullet" data-slide="1"></div>
+                <div class="ai-carousel-bullet" data-slide="2"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="isk-overlay" id="iskOverlay">
+        <div class="isk-popup">
+            <div class="isk-popup-header">
+                <h2 class="isk-popup-title">Öppna ISK</h2>
+                <button class="isk-popup-close" id="closeIskPopup">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="isk-progress-container">
+                <div class="isk-progress-steps">
+                    <div class="isk-progress-step active" id="iskProgress1"></div>
+                    <div class="isk-progress-step" id="iskProgress2"></div>
+                    <div class="isk-progress-step" id="iskProgress3"></div>
+                    <div class="isk-progress-step" id="iskProgress4"></div>
+                </div>
+                <div class="isk-step-indicator" id="iskStepIndicator">Steg 1 av 4</div>
+            </div>
+            
+            <div class="isk-step active" id="iskStep1">
+                <p class="isk-subtitle">Välj kategori för ditt investeringssparkonto</p>
+                <div class="category-grid">
+                    <div class="category-item" data-category="sparande">
+                        <div class="category-icon sparande">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2h0V5z"></path>
+                                <path d="M2 9v1c0 1.1.9 2 2 2h1"></path>
+                                <path d="M16 11h0"></path>
+                            </svg>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Sparande</div>
+                            <div class="category-description">Köpa bil, åka på resa, planera en fest</div>
+                        </div>
+                        <div class="category-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="buffert">
+                        <div class="category-icon buffert">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 7h-3a2 2 0 0 1-2-2V2"></path>
+                                <path d="M9 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7.5L20 9.5V11"></path>
+                                <path d="M14 21h6"></path>
+                                <path d="M17 18v6"></path>
+                            </svg>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Buffert</div>
+                            <div class="category-description">När du får oväntade utgifter</div>
+                        </div>
+                        <div class="category-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="pension">
+                        <div class="category-icon pension">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Pension</div>
+                            <div class="category-description">Lev gott som pensionär</div>
+                        </div>
+                        <div class="category-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="barnspar">
+                        <div class="category-icon barnspar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="8"></circle>
+                                <circle cx="9" cy="11" r="1" fill="currentColor"></circle>
+                                <circle cx="15" cy="11" r="1" fill="currentColor"></circle>
+                                <path d="M9 14.5s1 1.5 3 1.5 3-1.5 3-1.5"></path>
+                            </svg>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Barnspar</div>
+                            <div class="category-description">Spara till barnens framtid</div>
+                        </div>
+                        <div class="category-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="category-item" data-category="boende">
+                        <div class="category-icon boende">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Boende</div>
+                            <div class="category-description">Få råd med kontantinsatsen</div>
+                        </div>
+                        <div class="category-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="isk-step" id="iskStep2">
+                <div class="isk-selected-category" id="iskSelectedCategory" style="display: none;">
+                    <div class="isk-selected-category-icon" id="iskSelectedCategoryIcon"></div>
+                    <div class="isk-selected-category-info">
+                        <div class="isk-selected-category-name" id="iskSelectedCategoryName"></div>
+                        <div class="isk-selected-category-description" id="iskSelectedCategoryDescription"></div>
+                    </div>
+                </div>
+                <p class="isk-subtitle">Ge ditt konto ett namn så du enkelt kan hitta det</p>
+                <div class="isk-field">
+                    <label class="isk-label">Kontonamn</label>
+                    <input type="text" class="isk-input" id="iskAccountName" placeholder="T.ex. Min pension">
+                </div>
+                <div class="isk-button-container">
+                    <button class="isk-button-secondary" id="iskCancelStep2">Avbryt</button>
+                    <button class="isk-button" id="iskNextStep2" disabled>Fortsätt</button>
+                </div>
+            </div>
+            
+            <div class="isk-step" id="iskStep3">
+                <p class="isk-subtitle">Läs igenom och godkänn villkoren</p>
+                <div class="isk-checkbox-group">
+                    <label class="isk-checkbox-item">
+                        <input type="checkbox" id="iskCheckbox1">
+                        <div class="isk-checkbox"></div>
+                        <div class="isk-checkbox-content">
+                            <span class="isk-checkbox-label">Jag har läst och förstått information om insättningsgaranti</span>
+                            <a href="#" class="isk-checkbox-link">Läs mer om insättningsgaranti</a>
+                        </div>
+                    </label>
+                    <label class="isk-checkbox-item">
+                        <input type="checkbox" id="iskCheckbox2">
+                        <div class="isk-checkbox"></div>
+                        <div class="isk-checkbox-content">
+                            <span class="isk-checkbox-label">Jag godkänner villkoren för investeringssparkonto (ISK)</span>
+                            <a href="#" class="isk-checkbox-link">Läs ISK-villkor</a>
+                        </div>
+                    </label>
+                </div>
+                <div class="isk-button-container">
+                    <button class="isk-button-secondary" id="iskCancelStep3">Avbryt</button>
+                    <button class="isk-button" id="iskComplete" disabled>Öppna konto</button>
+                </div>
+            </div>
+            
+            <div class="isk-step isk-success-view" id="iskSuccessStep">
+                <div class="isk-success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="isk-success-title">Ditt ISK är öppnat!</h3>
+                <p class="isk-success-text" id="iskSuccessText">Grattis! Ditt investeringssparkonto är nu aktivt och redo att användas. Du kan börja investera direkt.</p>
+                
+                <h4 class="isk-success-actions-title">Kom igång redan nu</h4>
+                <div class="isk-success-actions">
+                    <button class="isk-success-action-item">
+                        <div class="isk-success-action-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="19" x2="12" y2="5"></line>
+                                <polyline points="5 12 12 5 19 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="isk-success-action-info">
+                            <div class="isk-success-action-name">Överför pengar</div>
+                            <div class="isk-success-action-description">Sätt in pengar från annan bank eller intern överföring</div>
+                        </div>
+                        <div class="isk-success-action-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </button>
+                    <button class="isk-success-action-item">
+                        <div class="isk-success-action-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="isk-success-action-info">
+                            <div class="isk-success-action-name">Skapa ett sparmål</div>
+                            <div class="isk-success-action-description">Sätt ett mål för ditt nya konto</div>
+                        </div>
+                        <div class="isk-success-action-chevron">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+                
+                <button class="isk-success-button" id="iskSuccessDone">Klar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="package-sidebar-overlay" id="packageSidebarOverlay"></div>
+    <div class="package-sidebar" id="packageSidebar">
+        <div class="package-sidebar-header">
+            <div>
+                <h2 class="package-sidebar-title" id="packageSidebarTitle">Tova liten</h2>
+                <p class="package-sidebar-subtitle" id="packageSidebarSubtitle">Ett sparande som fokuserar på trygghet och stabilitet framför högre risk och potentiell avkastning.</p>
+            </div>
+            <button class="package-sidebar-close" id="closePackageSidebar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="package-sidebar-content">
+            <div class="package-sidebar-section">
+                <h3 class="package-sidebar-section-title">Fördelning</h3>
+                <div class="package-sidebar-allocation">
+                    <div class="package-sidebar-pie" id="packageSidebarPie" style="background: conic-gradient(#F5F4F2 0% 10%, #181512 10% 100%);"></div>
+                    <div class="package-sidebar-breakdown">
+                        <div class="package-sidebar-breakdown-item">
+                            <span class="package-sidebar-breakdown-label">Aktier</span>
+                            <span class="package-sidebar-breakdown-value" id="packageSidebarStocks">10%</span>
+                        </div>
+                        <div class="package-sidebar-breakdown-item">
+                            <span class="package-sidebar-breakdown-label">Ränta</span>
+                            <span class="package-sidebar-breakdown-value" id="packageSidebarBonds">90%</span>
+                        </div>
+                        <div class="package-sidebar-breakdown-item">
+                            <span class="package-sidebar-breakdown-label">Övrigt</span>
+                            <span class="package-sidebar-breakdown-value" id="packageSidebarOther">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="package-sidebar-section">
+                <h3 class="package-sidebar-section-title">Detaljer</h3>
+                <div class="package-sidebar-details">
+                    <div class="package-sidebar-detail">
+                        <div>
+                            <div class="package-sidebar-detail-label">Månadssparande</div>
+                            <div class="package-sidebar-detail-value" id="packageSidebarMonthly">500 kr</div>
+                        </div>
+                    </div>
+                    <div class="package-sidebar-detail">
+                        <div>
+                            <div class="package-sidebar-detail-label">Om 5 år</div>
+                            <div class="package-sidebar-detail-value" id="packageSidebarFiveYear">32 000 kr</div>
+                        </div>
+                    </div>
+                    <div class="package-sidebar-detail">
+                        <div>
+                            <div class="package-sidebar-detail-label">Avkastning</div>
+                            <div class="package-sidebar-detail-value" id="packageSidebarReturn">+2 000 kr</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 12px; color: #666; margin-top: 12px;">Om börsen går som förväntat.</p>
+            </div>
+            
+            <div class="package-sidebar-section">
+                <h3 class="package-sidebar-section-title">Aktier (3)</h3>
+                <div class="package-sidebar-holdings">
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#B22234"/>
+                                <rect x="0" y="2.46" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="6.56" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="10.67" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="14.77" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="18.87" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="22.97" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="27.08" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="0" width="12.8" height="14.77" fill="#3C3B6E"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">Apple Inc.</div>
+                            <div class="package-sidebar-holding-detail">AAPL · USA</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">2.5%</div>
+                    </div>
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#B22234"/>
+                                <rect x="0" y="2.46" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="6.56" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="10.67" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="14.77" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="18.87" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="22.97" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="27.08" width="32" height="2.05" fill="#FFFFFF"/>
+                                <rect x="0" y="0" width="12.8" height="14.77" fill="#3C3B6E"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">Microsoft Corp.</div>
+                            <div class="package-sidebar-holding-detail">MSFT · USA</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">2.0%</div>
+                    </div>
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#006AA7"/>
+                                <rect x="13.33" y="0" width="5.33" height="32" fill="#FECC00"/>
+                                <rect x="0" y="13.33" width="32" height="5.33" fill="#FECC00"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">Volvo Group</div>
+                            <div class="package-sidebar-holding-detail">VOLV B · Sverige</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">1.5%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="package-sidebar-section">
+                <h3 class="package-sidebar-section-title">Räntefonder (5)</h3>
+                <div class="package-sidebar-holdings">
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#006AA7"/>
+                                <rect x="13.33" y="0" width="5.33" height="32" fill="#FECC00"/>
+                                <rect x="0" y="13.33" width="32" height="5.33" fill="#FECC00"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">Swedbank Robur Räntefond Kort</div>
+                            <div class="package-sidebar-holding-detail">Avgift 0.25%</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">18%</div>
+                    </div>
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#006AA7"/>
+                                <rect x="13.33" y="0" width="5.33" height="32" fill="#FECC00"/>
+                                <rect x="0" y="13.33" width="32" height="5.33" fill="#FECC00"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">Nordea Obligationsfond</div>
+                            <div class="package-sidebar-holding-detail">Avgift 0.30%</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">18%</div>
+                    </div>
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#006AA7"/>
+                                <rect x="13.33" y="0" width="5.33" height="32" fill="#FECC00"/>
+                                <rect x="0" y="13.33" width="32" height="5.33" fill="#FECC00"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">SEB Obligationsfond</div>
+                            <div class="package-sidebar-holding-detail">Avgift 0.28%</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">18%</div>
+                    </div>
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#006AA7"/>
+                                <rect x="13.33" y="0" width="5.33" height="32" fill="#FECC00"/>
+                                <rect x="0" y="13.33" width="32" height="5.33" fill="#FECC00"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">Handelsbanken Räntefond</div>
+                            <div class="package-sidebar-holding-detail">Avgift 0.22%</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">18%</div>
+                    </div>
+                    <div class="package-sidebar-holding">
+                        <div class="package-sidebar-holding-flag">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#00247D"/>
+                                <path d="M0 0 L32 21.33" stroke="#FFFFFF" stroke-width="3.2"/>
+                                <path d="M32 0 L0 21.33" stroke="#FFFFFF" stroke-width="3.2"/>
+                                <path d="M0 0 L32 21.33" stroke="#CF142B" stroke-width="1.6"/>
+                                <path d="M32 0 L0 21.33" stroke="#CF142B" stroke-width="1.6"/>
+                                <rect x="0" y="12.8" width="32" height="6.4" fill="#FFFFFF"/>
+                                <rect x="12.8" y="0" width="6.4" height="32" fill="#FFFFFF"/>
+                                <rect x="0" y="14.4" width="32" height="3.2" fill="#CF142B"/>
+                                <rect x="14.4" y="0" width="3.2" height="32" fill="#CF142B"/>
+                            </svg>
+                        </div>
+                        <div class="package-sidebar-holding-info">
+                            <div class="package-sidebar-holding-name">Vanguard Global Bond Index</div>
+                            <div class="package-sidebar-holding-detail">Avgift 0.15%</div>
+                        </div>
+                        <div class="package-sidebar-holding-value">18%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="package-sidebar-button">
+            <button>Välj detta paket</button>
+        </div>
+    </div>
+
+    </body>
+</html>
