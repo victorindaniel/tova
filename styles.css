@@ -392,7 +392,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .suggestions-container { display: flex; gap: 12px; max-width: 768px; width: 768px; margin-bottom: 24px; }
 .chat-messages .suggestions-container { width: 100%; max-width: 70%; display: grid; grid-template-columns: repeat(2, 1fr); }
 .suggestion-card { flex: 1; padding: 20px; background: #ffffff; border: none; border-radius: 20px; cursor: pointer; font-size: 14px; color: #1a1a1a; min-height: 100px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.02); gap: 12px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-.chat-messages .suggestion-card { font-size: 13px; min-height: 60px; display: flex; align-items: center; justify-content: center; }
+.chat-messages .suggestion-card { font-size: 13px; min-height: 60px; display: flex; justify-content: center; }
 .suggestion-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04); }
 .suggestion-icon { width: 20px; height: 20px; color: #000000; background: #fff; border: 1px solid #ededed; padding: 10px; border-radius: 12px; box-sizing: content-box; }
 .suggestion-card:first-child .suggestion-icon { background: #fff; border: 1px solid #ededed; }
@@ -492,14 +492,15 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .ai-suggestion-card { padding: 16px; background: #F5F4F2; border: none; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 13px; color: #1a1a1a; text-align: left; }
 .ai-suggestion-card:hover { background: #E9E7E2; transform: translateY(-1px); }
 .savings-packages { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; width: 100%; max-width: 100%; }
-.funds-list { display: flex; flex-direction: column; gap: 0; margin-top: 24px; border: 1px solid #EDEDED; border-radius: 12px; overflow: hidden; background: #FFFFFF; }
-.chat-message .funds-list { max-width: 70%; margin-top: 16px; }
-.fund-item { display: grid; grid-template-columns: 40px 2fr 1fr 1fr; padding: 16px 20px; align-items: center; gap: 16px; border-bottom: 1px solid #EDEDED; transition: background 0.2s; }
+.funds-list { display: flex; flex-direction: column; gap: 0; border: 1px solid #EDEDED; border-radius: 12px; overflow: hidden; background: #FFFFFF; margin-bottom: 24px; }
+.chat-message .funds-list { max-width: 70%; }
+.fund-item { display: grid; grid-template-columns: 40px 2fr 1fr 1fr 24px; padding: 16px 20px; align-items: center; gap: 16px; border-bottom: 1px solid #EDEDED; transition: background 0.2s; cursor: pointer; }
 .fund-item:last-child { border-bottom: none; }
 .fund-item:hover { background: #FBFBFA; }
 .fund-rank { font-size: 14px; font-weight: 500; color: #999; }
 .fund-name { display: flex; align-items: center; gap: 12px; }
 .fund-flag { width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.fund-chevron { color: #999; }
 .fund-title { font-size: 15px; font-weight: 500; color: #1a1a1a; }
 .fund-fee { font-size: 14px; color: #666; }
 .fund-return { font-size: 15px; font-weight: 500; text-align: right; }

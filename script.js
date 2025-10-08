@@ -1375,7 +1375,42 @@ function simulateMonthlySavingsAnalysis() {
                     
                     // Add suggestion cards after packages
                     setTimeout(() => {
-                        addSuggestionCards();
+                        const suggestionsWrapper = document.createElement('div');
+                        suggestionsWrapper.className = 'suggestions-wrapper';
+                        
+                        const heading = document.createElement('h3');
+                        heading.className = 'suggestions-heading';
+                        heading.textContent = 'Kan jag hjälpa till med något annat?';
+                        
+                        const suggestionsContainer = document.createElement('div');
+                        suggestionsContainer.className = 'suggestions-container';
+                        suggestionsContainer.innerHTML = `
+                            <div class="suggestion-card" data-message="Jag vill starta ett månadssparande">
+                                <span>Jag vill starta ett månadssparande</span>
+                            </div>
+                            <div class="suggestion-card" data-message="Tovas 10 populäraste fonder">
+                                <span>Tovas 10 populäraste fonder</span>
+                            </div>
+                            <div class="suggestion-card" data-message="Fonder med bäst avkastning på 3 år">
+                                <span>Fonder med bäst avkastning på 3 år</span>
+                            </div>
+                            <div class="suggestion-card" data-message="Hur mycket ska man spara per månad?">
+                                <span>Hur mycket ska man spara per månad?</span>
+                            </div>
+                        `;
+                        
+                        suggestionsWrapper.appendChild(heading);
+                        suggestionsWrapper.appendChild(suggestionsContainer);
+                        chatMessages.appendChild(suggestionsWrapper);
+                        
+                        // Add click handlers to suggestion cards
+                        suggestionsContainer.querySelectorAll('.suggestion-card').forEach(card => {
+                            card.addEventListener('click', function() {
+                                const text = this.getAttribute('data-message');
+                                // Dispatch custom event to trigger chat
+                                document.dispatchEvent(new CustomEvent('triggerChat', { detail: { message: text } }));
+                            });
+                        });
                     }, 300);
                 }
                 
@@ -2083,6 +2118,9 @@ function initializeChat() {
                             </div>
                             <div class="fund-fee">0,92%</div>
                             <div class="fund-return positive">+5,24%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
                         </div>
                         <div class="fund-item">
                             <div class="fund-rank">2</div>
@@ -2092,6 +2130,9 @@ function initializeChat() {
                             </div>
                             <div class="fund-fee">1,65%</div>
                             <div class="fund-return positive">+12,50%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
                         </div>
                         <div class="fund-item">
                             <div class="fund-rank">3</div>
@@ -2101,6 +2142,9 @@ function initializeChat() {
                             </div>
                             <div class="fund-fee">0,20%</div>
                             <div class="fund-return positive">+8,75%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
                         </div>
                         <div class="fund-item">
                             <div class="fund-rank">4</div>
@@ -2110,6 +2154,9 @@ function initializeChat() {
                             </div>
                             <div class="fund-fee">0,15%</div>
                             <div class="fund-return positive">+6,32%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
                         </div>
                         <div class="fund-item">
                             <div class="fund-rank">5</div>
@@ -2119,6 +2166,69 @@ function initializeChat() {
                             </div>
                             <div class="fund-fee">0,18%</div>
                             <div class="fund-return positive">+7,18%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="fund-item">
+                            <div class="fund-rank">6</div>
+                            <div class="fund-name">
+                                <div class="fund-flag">${getFlagIcon('se')}</div>
+                                <div class="fund-title">AMF Aktiefond Världen</div>
+                            </div>
+                            <div class="fund-fee">0,25%</div>
+                            <div class="fund-return positive">+9,45%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="fund-item">
+                            <div class="fund-rank">7</div>
+                            <div class="fund-name">
+                                <div class="fund-flag">${getFlagIcon('us')}</div>
+                                <div class="fund-title">Länsförsäkringar Global Index</div>
+                            </div>
+                            <div class="fund-fee">0,22%</div>
+                            <div class="fund-return positive">+7,92%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="fund-item">
+                            <div class="fund-rank">8</div>
+                            <div class="fund-name">
+                                <div class="fund-flag">${getFlagIcon('eu')}</div>
+                                <div class="fund-title">Tova Europa Hållbar</div>
+                            </div>
+                            <div class="fund-fee">0,85%</div>
+                            <div class="fund-return positive">+6,18%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="fund-item">
+                            <div class="fund-rank">9</div>
+                            <div class="fund-name">
+                                <div class="fund-flag">${getFlagIcon('se')}</div>
+                                <div class="fund-title">Avanza Zero</div>
+                            </div>
+                            <div class="fund-fee">0,00%</div>
+                            <div class="fund-return positive">+8,33%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="fund-item">
+                            <div class="fund-rank">10</div>
+                            <div class="fund-name">
+                                <div class="fund-flag">${getFlagIcon('us')}</div>
+                                <div class="fund-title">Tova Tech Innovation</div>
+                            </div>
+                            <div class="fund-fee">1,15%</div>
+                            <div class="fund-return positive">+14,82%</div>
+                            <svg class="fund-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
                         </div>
                     `;
                     chatMessages.appendChild(fundsContainer);
@@ -2234,6 +2344,22 @@ function initializeChat() {
             addConversationToList(text);
             simulateAIResponse(text);
         });
+    });
+    
+    // Listen for custom event from dynamically created suggestion cards
+    document.addEventListener('triggerChat', function(e) {
+        const text = e.detail.message;
+        addMessage(text, true);
+        addConversationToList(text);
+        simulateAIResponse(text);
+        
+        // Scroll to bottom after message is added
+        setTimeout(() => {
+            const chatArea = document.querySelector('.chat-area');
+            if (chatArea) {
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }
+        }, 100);
     });
 }
 
