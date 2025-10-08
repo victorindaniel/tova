@@ -182,7 +182,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .transfer-select { width: 100%; padding: 14px 16px; padding-right: 40px; border: 1px solid #EDEDED; border-radius: 12px; font-size: 15px; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; outline: none; transition: border 0.2s; background: #ffffff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%237E7E7E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
 .transfer-select:focus { border-color: #999; }
 .transfer-info { background: #F5F4F2; padding: 16px; border-radius: 12px; margin-bottom: 24px; font-size: 13px; color: #666; line-height: 1.5; }
-.transfer-button { width: 100%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.transfer-button { width: 30%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-left: auto; display: block; }
 .transfer-button:hover { background: #333; }
 .transfer-button:disabled { opacity: 0.4; cursor: not-allowed; }
 .transfer-button:disabled:hover { background: #1a1a1a; }
@@ -438,12 +438,36 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .analysis-step { display: flex; align-items: center; gap: 16px; position: relative; opacity: 0; transform: translateY(8px); max-height: 0; }
 .analysis-step.visible { opacity: 1; transform: translateY(0); max-height: 100px; transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease; }
 .analysis-step-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; }
-.analysis-step-icon.completed { background: transparent; border: none; border-radius: 50%; }
-.analysis-step-icon.completed img { width: 16px; height: 16px; filter: none; animation: iconCheckPop 0.4s ease; }
+.analysis-step-icon.completed { background: #F5F4F2; border: none; border-radius: 50%; position: relative; animation: checkmarkRing 0.6s ease; }
+.analysis-step-icon.completed img { width: 16px; height: 16px; filter: none; animation: iconCheckPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.analysis-step-icon.completed::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #00A86B;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: ringExpand 0.6s ease forwards;
+}
 @keyframes iconCheckPop { 
-    0% { opacity: 0; transform: scale(0.5); } 
-    60% { transform: scale(1.1); } 
-    100% { opacity: 1; transform: scale(1); } 
+    0% { opacity: 0; transform: scale(0.3) rotate(-45deg); } 
+    50% { transform: scale(1.15) rotate(5deg); } 
+    70% { transform: scale(0.95) rotate(-2deg); } 
+    100% { opacity: 1; transform: scale(1) rotate(0deg); } 
+}
+@keyframes ringExpand {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+}
+@keyframes checkmarkRing {
+    0% { background: #F5F4F2; transform: scale(0.9); }
+    50% { background: #E8F5E9; transform: scale(1.05); }
+    100% { background: #F5F4F2; transform: scale(1); }
 }
 .analysis-step-icon.pending .step-circle { width: 16px; height: 16px; border-radius: 50%; background: #DCDCDA; border: 2px solid #DCDCDA; }
 .analysis-step-content { flex: 1; display: flex; align-items: center; gap: 12px; }
@@ -1257,11 +1281,11 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .isk-checkbox-link { font-size: 13px; color: #0066cc; text-decoration: underline; transition: color 0.2s; }
 .isk-checkbox-link:hover { color: #004499; }
 .isk-button-container { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; }
-.isk-button { width: 40%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.isk-button { width: 30%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 .isk-button:hover { background: #333; }
 .isk-button:disabled { opacity: 0.4; cursor: not-allowed; }
 .isk-button:disabled:hover { background: #1a1a1a; }
-.isk-button-secondary { width: 40%; padding: 16px; background: #F5F4F2; color: #1a1a1a; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.isk-button-secondary { width: 30%; padding: 16px; background: #F5F4F2; color: #1a1a1a; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 .isk-button-secondary:hover { background: #E9E7E2; }
 .isk-button.loading { position: relative; color: transparent; pointer-events: none; }
 .isk-button.loading::after { content: ''; position: absolute; top: calc(50% - 10px); left: calc(50% - 10px); width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: #ffffff; border-radius: 50%; animation: spin 0.8s linear infinite; }
@@ -1282,5 +1306,5 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .isk-success-action-description { font-size: 12px; color: #666; line-height: 1.4; }
 .isk-success-action-chevron { width: 20px; height: 20px; flex-shrink: 0; color: #999; }
 .isk-success-action-chevron svg { width: 100%; height: 100%; stroke: currentColor; }
-.isk-success-button { width: 40%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-left: auto; display: block; }
+.isk-success-button { width: 30%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-left: auto; display: block; }
 .isk-success-button:hover { background: #333; }
