@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTransferPopup();
     initializeBankPopup();
     initializeIskPopup();
+    initializePodcastPopup();
     initializeAiCarousel();
     initializePackageSidebar();
     initializeSearch();
@@ -960,6 +961,432 @@ function initializeIskPopup() {
     }
 }
 
+// Podcast popup functionality
+function initializePodcastPopup() {
+    const podcastOverlay = document.getElementById('podcastOverlay');
+    const closePodcastPopup = document.getElementById('closePodcastPopup');
+    const podcastNavItem = document.querySelector('.nav-item:has(.nav-icon.purple)');
+    
+    // Open podcast popup
+    if (podcastNavItem && podcastOverlay) {
+        podcastNavItem.addEventListener('click', function() {
+            podcastOverlay.style.display = 'flex';
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    podcastOverlay.classList.add('active');
+                });
+            });
+        });
+    }
+    
+    // Close podcast popup
+    const closePodcastPopupFunc = function() {
+        podcastOverlay.classList.remove('active');
+        setTimeout(() => {
+            if (!podcastOverlay.classList.contains('active')) {
+                podcastOverlay.style.display = 'none';
+            }
+        }, 300);
+    };
+    
+    if (closePodcastPopup && podcastOverlay) {
+        closePodcastPopup.addEventListener('click', closePodcastPopupFunc);
+    }
+    
+    // Close on overlay click
+    if (podcastOverlay) {
+        podcastOverlay.addEventListener('click', function(e) {
+            if (e.target === podcastOverlay && closePodcastPopup) {
+                closePodcastPopup.click();
+            }
+        });
+    }
+}
+
+function simulateMonthlySavingsAnalysis() {
+    const chatMessages = document.getElementById('chatMessages');
+    
+    if (!chatMessages) {
+        return;
+    }
+    // Create the main analysis message
+    const analysisMessage = document.createElement('div');
+    analysisMessage.className = 'chat-message ai analysis-message';
+    analysisMessage.innerHTML = `
+        <div class="message-content">
+            <div class="analysis-description"></div>
+            <div class="analysis-container">
+                <div class="analysis-steps">
+                    <div class="analysis-step" data-step="1">
+                        <div class="analysis-step-icon pending">
+                            <div class="step-circle"></div>
+                        </div>
+                        <div class="analysis-step-content">
+                            <div class="analysis-step-title">Investeringsplan är skapad</div>
+                            <div class="step-progress-circle">
+                                <div class="progress-circle-fill"></div>
+                            </div>
+                            <div class="analysis-step-spacer"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-step" data-step="2">
+                        <div class="analysis-step-icon pending">
+                            <div class="step-circle"></div>
+                        </div>
+                        <div class="analysis-step-content">
+                            <div class="analysis-step-title">Samlar in dina tidigare aktiviteter</div>
+                            <div class="step-progress-circle">
+                                <div class="progress-circle-fill"></div>
+                            </div>
+                            <div class="analysis-step-spacer"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-step" data-step="3">
+                        <div class="analysis-step-icon pending">
+                            <div class="step-circle"></div>
+                        </div>
+                        <div class="analysis-step-content">
+                            <div class="analysis-step-title">Analyserar aktiviteter</div>
+                            <div class="step-progress-circle">
+                                <div class="progress-circle-fill"></div>
+                            </div>
+                            <div class="analysis-step-spacer"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-step" data-step="4">
+                        <div class="analysis-step-icon pending">
+                            <div class="step-circle"></div>
+                        </div>
+                        <div class="analysis-step-content">
+                            <div class="analysis-step-title">Skapar föreslagna investeringspaket</div>
+                            <div class="step-progress-circle">
+                                <div class="progress-circle-fill"></div>
+                            </div>
+                            <div class="analysis-step-spacer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="analysis-spinner">
+                <svg class="typing-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M2 12h20M5.64 5.64l12.72 12.72M5.64 18.36l12.72-12.72"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </div>
+        </div>
+    `;
+    
+    chatMessages.appendChild(analysisMessage);
+    
+    const steps = analysisMessage.querySelectorAll('.analysis-step');
+    const container = analysisMessage.querySelector('.analysis-container');
+    const description = analysisMessage.querySelector('.analysis-description');
+    
+    // Type the description first
+    function typeDescription() {
+        const text = "Jag analyserar nu din ekonomiska situation och tidigare aktiviteter för att skapa de bästa investeringspaketen för dig. Detta tar bara några sekunder.";
+        const words = text.split(' ');
+        let i = 0;
+        description.innerHTML = '';
+        
+        function type() {
+            if (i < words.length) {
+                description.innerHTML += (i > 0 ? ' ' : '') + words[i];
+                i++;
+                const progress = i / words.length;
+                setTimeout(type, 80 - (60 * progress));
+            } else {
+                // After description is typed, show the container and start step animation
+                setTimeout(() => {
+                    container.classList.add('active');
+                    setTimeout(() => {
+                        showSteps(0);
+                    }, 200);
+                }, 200);
+            }
+        }
+        type();
+    }
+    
+    // Add delay before starting to type the description
+    setTimeout(() => {
+        typeDescription();
+    }, 500);
+    
+    // First, animate steps appearing one by one
+    function showSteps(index) {
+        if (index < steps.length) {
+            steps[index].classList.add('visible');
+            setTimeout(() => {
+                showSteps(index + 1);
+            }, 200);
+        } else {
+            // After all steps are visible, start checking them
+            setTimeout(() => {
+                animateNextStep();
+            }, 400);
+        }
+    }
+    
+    // Animate the steps (start from step 1)
+    let currentStep = 0; // Start from step 1 (index 0)
+    
+    // Varied timing delays for more natural feel
+    const stepDelays = [1200, 4000, 3000, 4000];
+    
+    function animateNextStep() {
+        if (currentStep < steps.length) {
+            const step = steps[currentStep];
+            const icon = step.querySelector('.analysis-step-icon');
+            const progressCircle = step.querySelector('.step-progress-circle');
+            const titleElement = step.querySelector('.analysis-step-title');
+            
+            // Show progress circle for current step
+            progressCircle.classList.add('active');
+            
+            // Get the delay for this step
+            const delay = stepDelays[currentStep] || 1500;
+            
+            // Special handling for step 2 - change text halfway through
+            if (currentStep === 1) {
+                setTimeout(() => {
+                    titleElement.textContent = '17 aktiviteter hittade';
+                    
+                    // Add badges sequentially
+                    const badges = ['Fonder', 'Aktier', 'Insättningar', '+14'];
+                    badges.forEach((text, index) => {
+                        setTimeout(() => {
+                            const badge = document.createElement('span');
+                            badge.className = 'analysis-badge';
+                            badge.textContent = text;
+                            titleElement.appendChild(badge);
+                        }, 1000 + (index * 150));
+                    });
+                }, delay / 2);
+            }
+            
+            // Special handling for step 3 - add badge halfway through
+            if (currentStep === 2) {
+                setTimeout(() => {
+                    const badge = document.createElement('span');
+                    badge.className = 'analysis-badge';
+                    badge.textContent = '17';
+                    titleElement.appendChild(badge);
+                }, delay / 2);
+            }
+            
+            // Animate progress circle over the same duration as the step delay
+            let progress = 0;
+            const progressIncrement = 100 / (delay / 15); // Calculate increment based on delay
+            const progressInterval = setInterval(() => {
+                progress += progressIncrement;
+                const degrees = (progress / 100) * 360;
+                progressCircle.style.background = `conic-gradient(#000 ${degrees}deg, #EDEDED ${degrees}deg)`;
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    // Hide progress circle and show checkmark at the same time
+                    progressCircle.classList.remove('active');
+                    icon.classList.remove('pending');
+                    icon.classList.add('completed');
+                    icon.innerHTML = '<img src="icons/iconStepCheck.svg" alt="Completed" />';
+                }
+            }, 15);
+            
+            // Move to next step after the same delay
+            setTimeout(() => {
+                currentStep++;
+                animateNextStep();
+            }, delay);
+        } else {
+            // All steps completed, hide spinner and show final message
+            setTimeout(() => {
+                // Remove only the spinner
+                const spinner = analysisMessage.querySelector('.analysis-spinner');
+                if (spinner) {
+                    spinner.remove();
+                }
+                
+                // Show the final response with packages
+                const finalMessage = document.createElement('div');
+                finalMessage.className = 'chat-message ai';
+                const finalContent = document.createElement('div');
+                finalContent.className = 'message-content';
+                finalMessage.appendChild(finalContent);
+                chatMessages.appendChild(finalMessage);
+                
+                // Type the final message
+                function typeFinalMessage() {
+                    const text = "Här har du tre paket du kan börja månadsspara i – Tova liten, mellan och stor. Paketen är utformade efter din ekonomi och tidigare aktiviteter.";
+                    const words = text.split(' ');
+                    let i = 0;
+                    finalContent.innerHTML = '';
+                    
+                    function type() {
+                        if (i < words.length) {
+                            finalContent.innerHTML += (i > 0 ? ' ' : '') + words[i];
+                            i++;
+                            const progress = i / words.length;
+                            setTimeout(type, 80 - (60 * progress));
+                        } else {
+                            // After typing is complete, show packages
+                            setTimeout(() => {
+                                showPackages();
+                            }, 500);
+                        }
+                    }
+                    type();
+                }
+                
+                // Function to show packages
+                function showPackages() {
+                    const packagesContainer = document.createElement('div');
+                    packagesContainer.className = 'savings-packages';
+                    packagesContainer.innerHTML = `
+                        <div class="package-card" data-package="Tova liten">
+                            <div class="package-header">
+                                <div class="package-title">Tova liten</div>
+                                <div class="package-subtitle">Ett sparande som fokuserar på trygghet och stabilitet framför högre risk och potentiell avkastning.</div>
+                            </div>
+                            <div class="package-allocation">
+                                <div class="package-pie" style="background: conic-gradient(#F5F4F2 0% 10%, #181512 10% 100%);"></div>
+                                <div class="allocation-breakdown">
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Aktier</div>
+                                        <div class="allocation-value">10%</div>
+                                    </div>
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Obligationer</div>
+                                        <div class="allocation-value">80%</div>
+                                    </div>
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Övrigt</div>
+                                        <div class="allocation-value">10%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="package-details">
+                                <div class="detail-row">
+                                    <div class="detail-label">Månadssparande</div>
+                                    <div class="detail-value">500 SEK</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">5-års avkastning</div>
+                                    <div class="detail-value">+3.2%</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Förväntad avkastning</div>
+                                    <div class="detail-value">3.5% per år</div>
+                                </div>
+                            </div>
+                            <div class="package-buttons">
+                                <button class="package-secondary-btn" data-package="Tova liten">Visa paketinnehåll</button>
+                                <button class="package-content-btn" data-package="Tova liten">Välj Tova Liten</button>
+                            </div>
+                        </div>
+                        <div class="package-card" data-package="Tova mellan">
+                            <div class="package-header">
+                                <div class="package-title">Tova mellan</div>
+                                <div class="package-subtitle">En balanserad portfölj som kombinerar stabilitet med möjligheten till högre avkastning.</div>
+                            </div>
+                            <div class="package-allocation">
+                                <div class="package-pie" style="background: conic-gradient(#F5F4F2 0% 50%, #181512 50% 100%);"></div>
+                                <div class="allocation-breakdown">
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Aktier</div>
+                                        <div class="allocation-value">50%</div>
+                                    </div>
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Obligationer</div>
+                                        <div class="allocation-value">40%</div>
+                                    </div>
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Övrigt</div>
+                                        <div class="allocation-value">10%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="package-details">
+                                <div class="detail-row">
+                                    <div class="detail-label">Månadssparande</div>
+                                    <div class="detail-value">1 000 SEK</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">5-års avkastning</div>
+                                    <div class="detail-value">+5.8%</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Förväntad avkastning</div>
+                                    <div class="detail-value">6.2% per år</div>
+                                </div>
+                            </div>
+                            <div class="package-buttons">
+                                <button class="package-secondary-btn" data-package="Tova mellan">Visa paketinnehåll</button>
+                                <button class="package-content-btn" data-package="Tova mellan">Välj Tova Mellan</button>
+                            </div>
+                        </div>
+                        <div class="package-card" data-package="Tova stor">
+                            <div class="package-header">
+                                <div class="package-title">Tova stor</div>
+                                <div class="package-subtitle">En aggressiv portfölj som fokuserar på långsiktig tillväxt och högre avkastning.</div>
+                            </div>
+                            <div class="package-allocation">
+                                <div class="package-pie" style="background: conic-gradient(#F5F4F2 0% 20%, #181512 20% 100%);"></div>
+                                <div class="allocation-breakdown">
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Aktier</div>
+                                        <div class="allocation-value">80%</div>
+                                    </div>
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Obligationer</div>
+                                        <div class="allocation-value">10%</div>
+                                    </div>
+                                    <div class="allocation-item">
+                                        <div class="allocation-label">Övrigt</div>
+                                        <div class="allocation-value">10%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="package-details">
+                                <div class="detail-row">
+                                    <div class="detail-label">Månadssparande</div>
+                                    <div class="detail-value">2 000 SEK</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">5-års avkastning</div>
+                                    <div class="detail-value">+8.4%</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Förväntad avkastning</div>
+                                    <div class="detail-value">8.8% per år</div>
+                                </div>
+                            </div>
+                            <div class="package-buttons">
+                                <button class="package-secondary-btn" data-package="Tova stor">Visa paketinnehåll</button>
+                                <button class="package-content-btn" data-package="Tova stor">Välj Tova Stor</button>
+                            </div>
+                        </div>
+                    `;
+                    chatMessages.appendChild(packagesContainer);
+                    
+                    // Add suggestion cards after packages
+                    setTimeout(() => {
+                        addSuggestionCards();
+                    }, 300);
+                }
+                
+                typeFinalMessage();
+            }, 1000);
+        }
+    }
+    
+    // Container will be shown and steps will start appearing after delays
+}
+
 // AI Carousel functionality
 function initializeAiCarousel() {
     const aiCarouselOverlay = document.getElementById('aiCarouselOverlay');
@@ -1477,16 +1904,20 @@ function initializeChat() {
     }
 
     function simulateAIResponse(msg) {
+        const lm = msg.toLowerCase();
+        
+        if (lm.includes('månadssparande')) {
+            // Special animation for monthly savings
+            simulateMonthlySavingsAnalysis();
+            return;
+        }
+        
         const typing = addTypingIndicator();
         setTimeout(() => {
             typing.remove();
-            const lm = msg.toLowerCase();
             let response = '', showPackages = false, showFundsList = false;
             
-            if (lm.includes('månadssparande')) {
-                response = 'Här har du tre paket du kan börja månadsspara i – Tova <b>liten</b>, <b>mellan</b> och <b>stor</b>. Paketen är utformade efter din ekonomi och tidigare aktiviteter.';
-                showPackages = true;
-            } else if (lm.includes('varför') && (lm.includes('tova') || lm.includes('paket'))) {
+            if (lm.includes('varför') && (lm.includes('tova') || lm.includes('paket'))) {
                 response = 'Tovas paket tar bort komplexiteten i sparande. Istället för att välja bland tusentals fonder får du färdiga, balanserade portföljer som vår AI optimerat baserat på din risknivå. Du slipper göra egna analyser, ombalansering sker automatiskt, och avgifterna är transparenta. Plus – paketen anpassas efter din ekonomiska situation, så du får ett sparande som faktiskt passar just dig. Det är som att ha en personlig rådgivare, fast enklare och billigare.';
             } else if (lm.includes('populäraste') || lm.includes('tovas 10')) {
                 response = 'Här är Tovas 10 mest populära fonder och aktier för 2025:';
@@ -1702,12 +2133,20 @@ function initializeChat() {
                 // Ensure all content (packages, funds, suggestions) appears above chatInputActive
                 setTimeout(() => {
                     const chatArea = document.querySelector('.chat-area');
-                    const inputContainer = document.getElementById('chatInputActive');
-                    if (inputContainer && chatArea) {
-                        const inputRect = inputContainer.getBoundingClientRect();
-                        const chatRect = chatArea.getBoundingClientRect();
-                        const scrollPosition = inputRect.top - chatRect.top + chatArea.scrollTop - 100;
-                        chatArea.scrollTop = Math.max(0, scrollPosition);
+                    if (chatArea) {
+                        // After first message, scroll all the way to bottom
+                        if (isFirstMessage) {
+                            chatArea.scrollTop = chatArea.scrollHeight;
+                        } else {
+                            // For subsequent messages, scroll to show content above input
+                            const inputContainer = document.getElementById('chatInputActive');
+                            if (inputContainer) {
+                                const inputRect = inputContainer.getBoundingClientRect();
+                                const chatRect = chatArea.getBoundingClientRect();
+                                const scrollPosition = inputRect.top - chatRect.top + chatArea.scrollTop - 100;
+                                chatArea.scrollTop = Math.max(0, scrollPosition);
+                            }
+                        }
                     }
                 }, 200);
             });
@@ -1742,6 +2181,7 @@ function initializeChat() {
 
     function addConversationToList(message) {
         const todayList = document.querySelector('[data-section-content="today"]');
+        const todayHeader = document.querySelector('[data-section="today"]');
         const truncated = message.length > 40 ? message.substring(0, 37) + '...' : message;
         
         const newItem = document.createElement('div');
@@ -1749,6 +2189,11 @@ function initializeChat() {
         newItem.textContent = truncated;
         
         todayList.insertBefore(newItem, todayList.firstChild);
+        
+        // Show the section header if it has items
+        if (todayList.children.length > 0 && todayHeader) {
+            todayHeader.classList.add('has-items');
+        }
         
         while (todayList.children.length > 5) {
             todayList.removeChild(todayList.lastChild);
@@ -1811,6 +2256,7 @@ document.addEventListener('keydown', function(e) {
         const bankOverlay = document.getElementById('bankOverlay');
         const transferOverlay = document.getElementById('transferOverlay');
         const iskOverlay = document.getElementById('iskOverlay');
+        const podcastOverlay = document.getElementById('podcastOverlay');
         const packageSidebar = document.getElementById('packageSidebar');
         const aiCarouselOverlay = document.getElementById('aiCarouselOverlay');
         
@@ -1822,6 +2268,9 @@ document.addEventListener('keydown', function(e) {
         }
         if (iskOverlay && iskOverlay.classList.contains('active')) {
             iskOverlay.classList.remove('active');
+        }
+        if (podcastOverlay && podcastOverlay.classList.contains('active')) {
+            podcastOverlay.classList.remove('active');
         }
         if (packageSidebar && packageSidebar.classList.contains('active')) {
             // Close package sidebar
