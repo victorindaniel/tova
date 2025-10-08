@@ -439,7 +439,12 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .analysis-step.visible { opacity: 1; transform: translateY(0); max-height: 100px; transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease; }
 .analysis-step-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; }
 .analysis-step-icon.completed { background: transparent; border: none; border-radius: 50%; }
-.analysis-step-icon.completed img { width: 16px; height: 16px; filter: none; }
+.analysis-step-icon.completed img { width: 16px; height: 16px; filter: none; animation: iconCheckPop 0.4s ease; }
+@keyframes iconCheckPop { 
+    0% { opacity: 0; transform: scale(0.5); } 
+    60% { transform: scale(1.1); } 
+    100% { opacity: 1; transform: scale(1); } 
+}
 .analysis-step-icon.pending .step-circle { width: 16px; height: 16px; border-radius: 50%; background: #DCDCDA; border: 2px solid #DCDCDA; }
 .analysis-step-content { flex: 1; display: flex; align-items: center; gap: 12px; }
 .analysis-step-title { font-size: 14px; font-weight: 400; color: #666; line-height: 1.4; display: flex; align-items: center; gap: 8px; }
