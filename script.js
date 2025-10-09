@@ -1655,11 +1655,15 @@ function initializePanelCollapse() {
 // Dark mode functionality
 function initializeDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeLabel = document.getElementById('darkModeLabel');
     
     // Check for saved dark mode preference
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
+        if (darkModeLabel) {
+            darkModeLabel.textContent = 'Ljust';
+        }
     }
     
     if (darkModeToggle) {
@@ -1668,6 +1672,11 @@ function initializeDarkMode() {
             // Save preference
             const isDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('darkMode', isDark);
+            
+            // Update label text
+            if (darkModeLabel) {
+                darkModeLabel.textContent = isDark ? 'Ljust' : 'Mörkt';
+            }
         });
     }
 }

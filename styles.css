@@ -38,11 +38,12 @@ body.dark-mode {
 }
 
 /* Dark Mode Toggle */
-.dark-mode-toggle { padding: 0 12px !important; }
+.dark-mode-toggle { padding: 0 12px !important; display: flex; align-items: center; gap: 8px; }
 .dark-mode-toggle .sun-icon { display: none; }
 .dark-mode-toggle .moon-icon { display: block; }
 body.dark-mode .dark-mode-toggle .sun-icon { display: block; }
 body.dark-mode .dark-mode-toggle .moon-icon { display: none; }
+.dark-mode-label { font-size: 14px; }
 
 /* Font Face Declarations */
 @font-face {
@@ -1396,6 +1397,8 @@ body.dark-mode {
     .sidebar-user:hover { background: var(--bg-tertiary); }
     .sidebar-user-avatar { background: var(--bg-tertiary); color: var(--text-primary); }
     .sidebar-user:hover .sidebar-user-avatar { background: var(--bg-quaternary); }
+    .left-sidebar.collapsed .sidebar-user:hover { background: var(--bg-tertiary); }
+    .left-sidebar.collapsed .sidebar-user:hover .sidebar-user-avatar { background: var(--bg-quaternary); }
     .sidebar-user-name { color: var(--text-primary); }
     .sidebar-user-plan { color: var(--text-quaternary); }
     
