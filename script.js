@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePackageSidebar();
     initializeProfileSidebar();
     initializePanelCollapse();
+    initializeDarkMode();
     initializeSearch();
     initializeChat();
     initializeSections();
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeTransferPopup() {
     const transferOverlay = document.getElementById('transferOverlay');
     const closeTransferPopup = document.getElementById('closeTransferPopup');
-    const transferButton = document.querySelector('.top-bar-button:last-child');
+    const transferButton = document.getElementById('transferButton');
     const transferTabElements = document.querySelectorAll('.transfer-tab');
     
     const topupAmountInput = document.getElementById('topupAmount');
@@ -548,116 +549,116 @@ function initializeBankPopup() {
     });
     
     // Connect bank button
-    if (connectBankButton) {
-        connectBankButton.addEventListener('click', function() {
-            // Show loading state
-            connectBankButton.classList.add('loading');
-            connectBankButton.disabled = true;
-            
-            // Simulate connection process - go to success step
-            setTimeout(() => {
-                // Hide account selection step
-                accountSelectStep.style.transform = 'translateX(-100%)';
-                accountSelectStep.style.opacity = '0';
-                
-                setTimeout(() => {
-                    accountSelectStep.classList.remove('active');
-                    bankSuccessStep.classList.add('active');
-                    
-                    // Hide title for success step
-                    document.getElementById('bankPopupTitle').style.display = 'none';
-                    
-                    // Remove loading state
-                    connectBankButton.classList.remove('loading');
-                    
-                    // BankID tab switching
-                    const bankIdMobileTab = document.getElementById('bankIdMobileTab');
-                    const bankIdCardTab = document.getElementById('bankIdCardTab');
-                    const bankIdMobileContent = document.getElementById('bankIdMobileContent');
-                    const bankIdCardContent = document.getElementById('bankIdCardContent');
-                    
-                    if (bankIdMobileTab) {
-                        bankIdMobileTab.addEventListener('click', function() {
-                            bankIdMobileTab.classList.add('active');
-                            bankIdCardTab.classList.remove('active');
-                            bankIdMobileContent.style.display = 'block';
-                            bankIdCardContent.classList.remove('active');
-                        });
-                    }
-                    
-                    if (bankIdCardTab) {
-                        bankIdCardTab.addEventListener('click', function() {
-                            bankIdCardTab.classList.add('active');
-                            bankIdMobileTab.classList.remove('active');
-                            bankIdMobileContent.style.display = 'none';
-                            bankIdCardContent.classList.add('active');
-                        });
-                    }
-                    
-                        // After 2 seconds, show spinner
-                        setTimeout(() => {
-                            const bankIdQrContainer = document.getElementById('bankIdQrContainer');
-                            bankIdQrContainer.innerHTML = '<div class="bank-bankid-spinner"></div>';
-                            
-                            // After another 2 seconds, go to account selection
-                            setTimeout(() => {
-                                bankBankIdStep.classList.remove('active');
-                                accountSelectStep.classList.add('active');
-                                
-                                // Update title for account selection step
-                                document.getElementById('bankPopupTitle').textContent = 'Anslut konto i ' + selectedBankName;
-                            
-                            // Reset QR code for next time
-                            bankIdQrContainer.innerHTML = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="200" height="200" fill="white"/>
-                                <g fill="black">
-                                    <rect x="20" y="20" width="20" height="20"/>
-                                    <rect x="60" y="20" width="20" height="20"/>
-                                    <rect x="80" y="20" width="20" height="20"/>
-                                    <rect x="100" y="20" width="20" height="20"/>
-                                    <rect x="140" y="20" width="20" height="20"/>
-                                    <rect x="160" y="20" width="20" height="20"/>
-                                    <rect x="20" y="40" width="20" height="20"/>
-                                    <rect x="100" y="40" width="20" height="20"/>
-                                    <rect x="160" y="40" width="20" height="20"/>
-                                    <rect x="20" y="60" width="20" height="20"/>
-                                    <rect x="60" y="60" width="20" height="20"/>
-                                    <rect x="100" y="60" width="20" height="20"/>
-                                    <rect x="120" y="60" width="20" height="20"/>
-                                    <rect x="160" y="60" width="20" height="20"/>
-                                    <rect x="20" y="80" width="20" height="20"/>
-                                    <rect x="60" y="80" width="20" height="20"/>
-                                    <rect x="100" y="80" width="20" height="20"/>
-                                    <rect x="140" y="80" width="20" height="20"/>
-                                    <rect x="160" y="80" width="20" height="20"/>
-                                    <rect x="20" y="100" width="20" height="20"/>
-                                    <rect x="100" y="100" width="20" height="20"/>
-                                    <rect x="120" y="100" width="20" height="20"/>
-                                    <rect x="140" y="100" width="20" height="20"/>
-                                    <rect x="160" y="100" width="20" height="20"/>
-                                    <rect x="60" y="120" width="20" height="20"/>
-                                    <rect x="80" y="120" width="20" height="20"/>
-                                    <rect x="140" y="120" width="20" height="20"/>
-                                    <rect x="20" y="140" width="20" height="20"/>
-                                    <rect x="40" y="140" width="20" height="20"/>
-                                    <rect x="60" y="140" width="20" height="20"/>
-                                    <rect x="80" y="140" width="20" height="20"/>
-                                    <rect x="100" y="140" width="20" height="20"/>
-                                    <rect x="120" y="140" width="20" height="20"/>
-                                    <rect x="140" y="140" width="20" height="20"/>
-                                    <rect x="160" y="140" width="20" height="20"/>
-                                    <rect x="40" y="160" width="20" height="20"/>
-                                    <rect x="80" y="160" width="20" height="20"/>
-                                    <rect x="120" y="160" width="20" height="20"/>
-                                    <rect x="140" y="160" width="20" height="20"/>
-                                </g>
-                            </svg>`;
-                        }, 2000);
-                    }, 2000);
-                }, 300);
-            }, 500);
-        });
-    }
+    // if (connectBankButton) {
+    //     connectBankButton.addEventListener('click', function() {
+    //         // Show loading state
+    //         connectBankButton.classList.add('loading');
+    //         connectBankButton.disabled = true;
+    //         
+    //         // Simulate connection process - go to success step
+    //         setTimeout(() => {
+    //             // Hide account selection step
+    //             accountSelectStep.style.transform = 'translateX(-100%)';
+    //             accountSelectStep.style.opacity = '0';
+    //             
+    //             setTimeout(() => {
+    //                 accountSelectStep.classList.remove('active');
+    //                 bankSuccessStep.classList.add('active');
+    //                 
+    //                 // Hide title for success step
+    //                 document.getElementById('bankPopupTitle').style.display = 'none';
+    //                 
+    //                 // Remove loading state
+    //                 connectBankButton.classList.remove('loading');
+    //                 
+    //                 // BankID tab switching
+    //                 const bankIdMobileTab = document.getElementById('bankIdMobileTab');
+    //                 const bankIdCardTab = document.getElementById('bankIdCardTab');
+    //                 const bankIdMobileContent = document.getElementById('bankIdMobileContent');
+    //                 const bankIdCardContent = document.getElementById('bankIdCardContent');
+    //                 
+    //                 if (bankIdMobileTab) {
+    //                     bankIdMobileTab.addEventListener('click', function() {
+    //                         bankIdMobileTab.classList.add('active');
+    //                         bankIdCardTab.classList.remove('active');
+    //                         bankIdMobileContent.style.display = 'block';
+    //                         bankIdCardContent.classList.remove('active');
+    //                     });
+    //                 }
+    //                 
+    //                 if (bankIdCardTab) {
+    //                     bankIdCardTab.addEventListener('click', function() {
+    //                         bankIdCardTab.classList.add('active');
+    //                         bankIdMobileTab.classList.remove('active');
+    //                         bankIdMobileContent.style.display = 'none';
+    //                         bankIdCardContent.classList.add('active');
+    //                     });
+    //                 }
+    //                 
+    //                     // After 2 seconds, show spinner
+    //                     setTimeout(() => {
+    //                         const bankIdQrContainer = document.getElementById('bankIdQrContainer');
+    //                         bankIdQrContainer.innerHTML = '<div class="bank-bankid-spinner"></div>';
+    //                         
+    //                         // After another 2 seconds, go to account selection
+    //                         setTimeout(() => {
+    //                             bankBankIdStep.classList.remove('active');
+    //                             accountSelectStep.classList.add('active');
+    //                             
+    //                             // Update title for account selection step
+    //                             document.getElementById('bankPopupTitle').textContent = 'Anslut konto i ' + selectedBankName;
+    //                         
+    //                         // Reset QR code for next time
+    //                         bankIdQrContainer.innerHTML = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    //                             <rect width="200" height="200" fill="white"/>
+    //                             <g fill="black">
+    //                                 <rect x="20" y="20" width="20" height="20"/>
+    //                                 <rect x="60" y="20" width="20" height="20"/>
+    //                                 <rect x="80" y="20" width="20" height="20"/>
+    //                                 <rect x="100" y="20" width="20" height="20"/>
+    //                                 <rect x="140" y="20" width="20" height="20"/>
+    //                                 <rect x="160" y="20" width="20" height="20"/>
+    //                                 <rect x="20" y="40" width="20" height="20"/>
+    //                                 <rect x="100" y="40" width="20" height="20"/>
+    //                                 <rect x="160" y="40" width="20" height="20"/>
+    //                                 <rect x="20" y="60" width="20" height="20"/>
+    //                                 <rect x="60" y="60" width="20" height="20"/>
+    //                                 <rect x="100" y="60" width="20" height="20"/>
+    //                                 <rect x="120" y="60" width="20" height="20"/>
+    //                                 <rect x="160" y="60" width="20" height="20"/>
+    //                                 <rect x="20" y="80" width="20" height="20"/>
+    //                                 <rect x="60" y="80" width="20" height="20"/>
+    //                                 <rect x="100" y="80" width="20" height="20"/>
+    //                                 <rect x="140" y="80" width="20" height="20"/>
+    //                                 <rect x="160" y="80" width="20" height="20"/>
+    //                                 <rect x="20" y="100" width="20" height="20"/>
+    //                                 <rect x="100" y="100" width="20" height="20"/>
+    //                                 <rect x="120" y="100" width="20" height="20"/>
+    //                                 <rect x="140" y="100" width="20" height="20"/>
+    //                                 <rect x="160" y="100" width="20" height="20"/>
+    //                                 <rect x="60" y="120" width="20" height="20"/>
+    //                                 <rect x="80" y="120" width="20" height="20"/>
+    //                                 <rect x="140" y="120" width="20" height="20"/>
+    //                                 <rect x="20" y="140" width="20" height="20"/>
+    //                                 <rect x="40" y="140" width="20" height="20"/>
+    //                                 <rect x="60" y="140" width="20" height="20"/>
+    //                                 <rect x="80" y="140" width="20" height="20"/>
+    //                                 <rect x="100" y="140" width="20" height="20"/>
+    //                                 <rect x="120" y="140" width="20" height="20"/>
+    //                                 <rect x="140" y="140" width="20" height="20"/>
+    //                                 <rect x="160" y="140" width="20" height="20"/>
+    //                                 <rect x="40" y="160" width="20" height="20"/>
+    //                                 <rect x="80" y="160" width="20" height="20"/>
+    //                                 <rect x="120" y="160" width="20" height="20"/>
+    //                                 <rect x="140" y="160" width="20" height="20"/>
+    //                             </g>
+    //                         </svg>`;
+    //                     }, 2000);
+    //                 }, 2000);
+    //             }, 300);
+    //         }, 500);
+    //     });
+    // }
     
     // Success done button
     if (bankSuccessDone) {
@@ -1188,7 +1189,10 @@ function simulateMonthlySavingsAnalysis() {
             const progressInterval = setInterval(() => {
                 progress += progressIncrement;
                 const degrees = (progress / 100) * 360;
-                progressCircle.style.background = `conic-gradient(#000 ${degrees}deg, #EDEDED ${degrees}deg)`;
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                const fillColor = isDarkMode ? '#fff' : '#000';
+                const trackColor = isDarkMode ? '#606060' : '#EDEDED';
+                progressCircle.style.background = `conic-gradient(${fillColor} ${degrees}deg, ${trackColor} ${degrees}deg)`;
                 if (progress >= 100) {
                     clearInterval(progressInterval);
                     // Hide progress circle and show checkmark at the same time
@@ -1645,6 +1649,26 @@ function initializePanelCollapse() {
         
         // Add cursor pointer to panel header
         panelHeader.style.cursor = 'pointer';
+    }
+}
+
+// Dark mode functionality
+function initializeDarkMode() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    
+    // Check for saved dark mode preference
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    }
+    
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            // Save preference
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+        });
     }
 }
 
