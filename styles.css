@@ -499,7 +499,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
     60% { transform: scale(1.1); } 
     100% { opacity: 1; transform: scale(1); } 
 }
-.analysis-step-icon.pending .step-circle { width: 16px; height: 16px; border-radius: 50%; background: #DCDCDA; border: 2px solid #DCDCDA; }
+.analysis-step-icon.pending .step-circle { width: 12px; height: 12px; border-radius: 50%; background: #DCDCDA; border: 2px solid #DCDCDA; }
 .analysis-step-content { flex: 1; display: flex; align-items: center; gap: 12px; }
 .analysis-step-title { font-size: 14px; font-weight: 400; color: #666; line-height: 1.4; display: flex; align-items: center; gap: 8px; }
 .analysis-badge { background: #F5F4F2; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 500; color: #000; opacity: 0; animation: badgeFadeIn 0.3s ease forwards; }
@@ -514,7 +514,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
     content: '';
     position: absolute;
     left: 11px;
-    top: 32px;
+    top: 30px;
     width: 1px;
     height: 16px;
     background: #DCDCDA;
