@@ -380,14 +380,15 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .left-panel { width: 300px; background: #ffffff; display: flex; flex-direction: column; overflow: hidden; position: relative; z-index: 20; margin: 24px 0 24px 24px; border-radius: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.02); max-height: 100vh; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .left-panel.collapsed { max-height: 71px; }
 .panel-header { padding: 20px 32px 20px 32px; overflow: visible; position: relative; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-.panel-title { font-size: 18px; font-weight: 500; color: #1a1a1a; }
+.panel-title { font-size: 16px; font-weight: 500; color: #1a1a1a; }
 .panel-collapse-btn { width: 32px; height: 32px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #7E7E7E; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0; flex-shrink: 0; border-radius: 6px; }
 .panel-collapse-btn:hover { color: #1a1a1a; background: #F5F4F2; }
 .panel-header:hover .panel-collapse-btn { color: #1a1a1a; background: #F5F4F2; }
+.panel-collapse-btn svg { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .left-panel.collapsed .panel-collapse-btn svg { transform: rotate(180deg); }
 .left-panel > *:not(.panel-header) { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s; }
 .left-panel.collapsed > *:not(.panel-header) { opacity: 0; transform: translateY(-10px); pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; }
-.nav-section { padding: 16px; }
+.nav-section { padding: 0px 16px 16px 16px; }
 .nav-item { display: flex; align-items: center; gap: 12px; padding: 8px 16px; border-radius: 8px; cursor: pointer; transition: background 0.2s; position: relative; }
 .nav-item:hover { background: #F5F4F2; }
 .nav-item::after { content: ''; position: absolute; right: 12px; top: 50%; transform: translateY(-50%) translateX(-4px); width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 18l6-6-6-6' stroke='%237E7E7E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; background-position: center; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
