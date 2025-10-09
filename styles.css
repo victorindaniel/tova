@@ -384,8 +384,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .panel-collapse-btn { width: 32px; height: 32px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #7E7E7E; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0; flex-shrink: 0; border-radius: 6px; }
 .panel-collapse-btn:hover { color: #1a1a1a; background: #F5F4F2; }
 .panel-header:hover .panel-collapse-btn { color: #1a1a1a; background: #F5F4F2; }
-.panel-collapse-btn svg { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-.left-panel.collapsed .panel-collapse-btn svg { transform: rotate(180deg); }
+.panel-collapse-btn svg { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: rotate(180deg); }
+.left-panel.collapsed .panel-collapse-btn svg { transform: rotate(0deg); }
 .left-panel > *:not(.panel-header) { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s; }
 .left-panel.collapsed > *:not(.panel-header) { opacity: 0; transform: translateY(-10px); pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; }
 .nav-section { padding: 0px 16px 16px 16px; }
@@ -405,8 +405,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .section-header[data-section="today"].has-items { display: flex; }
 .section-header:hover { background: #F5F4F2; }
 .section-title { font-size: 13px; color: #666; font-weight: 500; }
-.section-arrow { transition: transform 0.3s ease; color: #999; display: flex; align-items: center; }
-.section-arrow.collapsed { transform: rotate(-180deg); }
+.section-arrow { transition: transform 0.3s ease; color: #999; display: flex; align-items: center; transform: rotate(180deg); }
+.section-arrow.collapsed { transform: rotate(0deg); }
 .section-list { padding: 0 16px; max-height: 500px; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 1; }
 .section-list.collapsed { max-height: 0; opacity: 0; }
 .section-list-item { padding: 8px 16px; font-size: 14px; color: #1a1a1a; cursor: pointer; border-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
