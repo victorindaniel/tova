@@ -103,6 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePodcastPopup();
     initializeAiCarousel();
     initializePackageSidebar();
+    initializeProfileSidebar();
+    initializePanelCollapse();
     initializeSearch();
     initializeChat();
     initializeSections();
@@ -1629,6 +1631,72 @@ function initializePackageSidebar() {
             openPackageSidebar(packageName);
         }
     });
+}
+
+// Panel collapse functionality
+function initializePanelCollapse() {
+    const leftPanel = document.querySelector('.left-panel');
+    const panelHeader = document.querySelector('.panel-header');
+    
+    if (panelHeader && leftPanel) {
+        panelHeader.addEventListener('click', () => {
+            leftPanel.classList.toggle('collapsed');
+        });
+        
+        // Add cursor pointer to panel header
+        panelHeader.style.cursor = 'pointer';
+    }
+}
+
+// Profile sidebar functionality
+function initializeProfileSidebar() {
+    const profileSidebar = document.getElementById('profileSidebar');
+    const profileSidebarOverlay = document.getElementById('profileSidebarOverlay');
+    const closeProfileSidebarBtn = document.getElementById('closeProfileSidebar');
+    const sidebarUser = document.querySelector('.sidebar-user');
+    
+    function openProfileSidebar() {
+        // Add profile-open class to sidebar-user
+        if (sidebarUser) {
+            sidebarUser.classList.add('profile-open');
+        }
+        // Show overlay and sidebar with animation
+        profileSidebarOverlay.style.display = 'block';
+        requestAnimationFrame(() => {
+            profileSidebarOverlay.classList.add('active');
+            profileSidebar.classList.add('active');
+        });
+    }
+    
+    function closeProfileSidebar() {
+        // Remove profile-open class from sidebar-user
+        if (sidebarUser) {
+            sidebarUser.classList.remove('profile-open');
+        }
+        profileSidebarOverlay.classList.remove('active');
+        profileSidebar.classList.remove('active');
+        // Hide overlay after transition
+        setTimeout(() => {
+            if (!profileSidebarOverlay.classList.contains('active')) {
+                profileSidebarOverlay.style.display = 'none';
+            }
+        }, 400);
+    }
+    
+    // Open profile sidebar when clicking sidebar-user
+    if (sidebarUser) {
+        sidebarUser.addEventListener('click', openProfileSidebar);
+    }
+    
+    // Close button
+    if (closeProfileSidebarBtn) {
+        closeProfileSidebarBtn.addEventListener('click', closeProfileSidebar);
+    }
+    
+    // Close on overlay click
+    if (profileSidebarOverlay) {
+        profileSidebarOverlay.addEventListener('click', closeProfileSidebar);
+    }
 }
 
 // Search functionality

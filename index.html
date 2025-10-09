@@ -173,6 +173,11 @@
             <div class="left-panel">
                 <div class="panel-header">
                     <h1 class="panel-title">Investera med Tova AI</h1>
+                    <button class="panel-collapse-btn" id="panelCollapseBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
                 </div>
                 <div class="nav-section">
                     <div class="nav-item">
@@ -1107,5 +1112,97 @@
             <button>Välj detta paket</button>
         </div>
     </div>
+
+    <!-- Profile Sidebar -->
+    <div class="profile-sidebar-overlay" id="profileSidebarOverlay"></div>
+    <div class="profile-sidebar" id="profileSidebar">
+        <div class="profile-sidebar-header">
+            <div>
+                <h2 class="profile-sidebar-title">Profil</h2>
+                <p class="profile-sidebar-subtitle">Dina uppgifter och inställningar</p>
+            </div>
+            <button class="profile-sidebar-close" id="closeProfileSidebar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="profile-sidebar-content">
+            <div class="profile-sidebar-section">
+                <div class="profile-sidebar-user">
+                    <div class="profile-sidebar-avatar">AV</div>
+                    <div class="profile-sidebar-user-info">
+                        <h3 class="profile-sidebar-user-name">Anna Vallin</h3>
+                        <p class="profile-sidebar-user-email">anna.vallin@example.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-sidebar-section">
+                <h3 class="profile-sidebar-section-title">Prenumeration</h3>
+                <div class="profile-sidebar-subscription">
+                    <div class="profile-sidebar-subscription-plan">
+                        <div class="profile-sidebar-subscription-label">Aktuell plan</div>
+                        <div class="profile-sidebar-subscription-value">Tova Premium</div>
+                    </div>
+                    <div class="profile-sidebar-subscription-status">
+                        <div class="profile-sidebar-subscription-label">Status</div>
+                        <div class="profile-sidebar-subscription-value">
+                            <span class="profile-sidebar-status-badge">Aktiv</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-sidebar-section">
+                <h3 class="profile-sidebar-section-title">Kontoinformation</h3>
+                <div class="profile-sidebar-info-list">
+                    <div class="profile-sidebar-info-item">
+                        <span class="profile-sidebar-info-label">Personnummer</span>
+                        <span class="profile-sidebar-info-value">19900101-1234</span>
+                    </div>
+                    <div class="profile-sidebar-info-item">
+                        <span class="profile-sidebar-info-label">Telefon</span>
+                        <span class="profile-sidebar-info-value">+46 70 123 45 67</span>
+                    </div>
+                    <div class="profile-sidebar-info-item">
+                        <span class="profile-sidebar-info-label">Medlem sedan</span>
+                        <span class="profile-sidebar-info-value">Januari 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-sidebar-section">
+                <h3 class="profile-sidebar-section-title">Inställningar</h3>
+                <div class="profile-sidebar-settings">
+                    <button class="profile-sidebar-setting-item">
+                        <span>Ändra lösenord</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="profile-sidebar-setting-item">
+                        <span>Notifikationer</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="profile-sidebar-setting-item">
+                        <span>Integritetsinställningar</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-sidebar-button">
+            <button class="profile-logout-btn">Logga ut</button>
+        </div>
+    </div>
+
     </body>
 </html>
