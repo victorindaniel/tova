@@ -484,7 +484,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 /* Chat Area Styles */
 .chat-area { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px; overflow-y: auto; background: #F7F6F5; margin: 0; border-radius: 0; position: relative; transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .left-panel.collapsed ~ .chat-area { margin-left: -330px; }
-.welcome-message { font-size: 48px; font-weight: 500; margin-bottom: 48px; margin-top: 40px; text-align: center; }
+.welcome-message { font-size: 40px; font-weight: 500; margin-bottom: 32px; text-align: center; }
 .suggestions-wrapper { width: 100%; max-width: 768px; }
 .suggestions-heading { font-size: 14px; font-weight: 500; color: #1a1a1a; margin-bottom: 16px; text-align: left; }
 .suggestions-container { display: flex; gap: 12px; max-width: 768px; width: 768px; margin-bottom: 24px; }
@@ -592,6 +592,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .savings-packages { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; width: 100%; max-width: 100%; }
 .funds-list { display: flex; flex-direction: column; gap: 0; border: 1px solid #EDEDED; border-radius: 12px; overflow: hidden; background: #FFFFFF; margin-bottom: 24px; }
 .chat-message .funds-list { max-width: 70%; }
+.fund-header { display: grid; grid-template-columns: 40px 2fr 1fr 1fr 24px; padding: 12px 20px; align-items: center; gap: 16px; background: #F5F4F2; border-bottom: 1px solid #EDEDED; font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+.fund-header-return { text-align: right; }
 .fund-item { display: grid; grid-template-columns: 40px 2fr 1fr 1fr 24px; padding: 16px 20px; align-items: center; gap: 16px; border-bottom: 1px solid #EDEDED; transition: background 0.2s; cursor: pointer; }
 .fund-item:last-child { border-bottom: none; }
 .fund-item:hover { background: #F7F6F5; }
@@ -1525,6 +1527,7 @@ body.dark-mode {
     
     /* Funds */
     .funds-list { background: var(--bg-primary); border-color: var(--border-primary); }
+    .fund-header { background: var(--bg-tertiary); border-bottom-color: var(--border-primary); color: var(--text-tertiary); }
     .fund-item { border-bottom-color: var(--border-primary); }
     .fund-item:hover { background: var(--bg-secondary); }
     .fund-rank { color: var(--text-quaternary); }

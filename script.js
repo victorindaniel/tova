@@ -2211,6 +2211,13 @@ function initializeChat() {
                     const fundsContainer = document.createElement('div');
                     fundsContainer.className = 'funds-list';
                     fundsContainer.innerHTML = `
+                        <div class="fund-header">
+                            <div class="fund-header-rank">#</div>
+                            <div class="fund-header-name">Fond</div>
+                            <div class="fund-header-fee">Avgift</div>
+                            <div class="fund-header-return">Avkastning</div>
+                            <div class="fund-header-spacer"></div>
+                        </div>
                         <div class="fund-item">
                             <div class="fund-rank">1</div>
                             <div class="fund-name">
