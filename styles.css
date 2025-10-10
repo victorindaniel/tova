@@ -1709,6 +1709,19 @@ body.dark-mode {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
+    /* Prevent viewport shift on keyboard */
+    html {
+        position: fixed;
+        width: 100%;
+        overflow: hidden;
+    }
+    body {
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    
     /* Mobile Menu Button */
     .mobile-header-left {
         display: flex;
@@ -1922,14 +1935,14 @@ body.dark-mode {
     .help-text { display: none; }
     
     /* Adjust top bar for mobile */
-    .top-bar { padding: 12px 16px; background: #F7F6F5; border-bottom: none; }
+    .top-bar { padding: 12px 16px; background: #F7F6F5; border-bottom: none; position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100; }
     .balance-display { display: none; }
     .top-bar-divider { display: none; }
     .search-bar { display: none; }
     .top-bar-button { display: none; }
     
     /* Adjust chat area */
-    .chat-area { padding: 16px; padding-bottom: 180px; margin-left: 0 !important; }
+    .chat-area { padding: 16px; padding-top: 80px; padding-bottom: 180px; margin-left: 0 !important; min-height: 100vh; }
     .left-panel.collapsed ~ .chat-area { margin-left: 0 !important; }
     .chat-area.chat-active { padding-bottom: 180px; }
     .chat-messages.active { padding: 0; }
@@ -1962,7 +1975,7 @@ body.dark-mode {
         margin-left: 0 !important;
     }
     .chat-input-wrapper { max-width: 100% !important; width: 100% !important; padding: 16px; margin: 0; box-sizing: border-box; }
-    .chat-input { border-radius: 999px; border: 1px solid #fff; padding: 14px 120px 12px 16px; min-height: 56px; height: 56px; }
+    .chat-input { border-radius: 999px; border: 1px solid #fff; padding: 12px 120px 12px 16px; min-height: 48px; height: 48px; max-height: 48px; overflow-y: hidden; }
     .input-actions { position: absolute; top: 42%; right: 22px; left: auto; transform: translateY(-50%); justify-content: flex-end; margin: 0; }
     .input-action-btn { width: 44px; height: 44px; border-radius: 999px; }
     .input-action-btn.attach { display: none; }
