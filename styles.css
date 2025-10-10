@@ -570,8 +570,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .chat-area.chat-active { justify-content: flex-start; padding-bottom: 200px; position: relative; }
 
 /* Search Styles */
-.search-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.2); z-index: 90; display: none; }
-.search-overlay.active { display: block; }
+.search-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.2); z-index: 90; opacity: 0; visibility: hidden; transition: opacity 0.2s ease, visibility 0.2s ease; }
+.search-overlay.active { opacity: 1; visibility: visible; }
 .search-dropdown { position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: #FFFFFF; border: none; border-radius: 12px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); padding: 16px 0; max-height: 400px; overflow-y: auto; z-index: 102; opacity: 0; transform: translateY(-8px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s; visibility: hidden; pointer-events: none; }
 .search-dropdown.active { opacity: 1; transform: translateY(0); visibility: visible; pointer-events: auto; transition: opacity 0.2s ease, transform 0.2s ease; }
 .dropdown-header { display: grid; grid-template-columns: 3fr 2fr 1fr 1fr; padding: 8px 24px; font-size: 14px; color: #999; font-weight: 500; border-bottom: 1px solid #EDEDED; margin-bottom: 8px; }
