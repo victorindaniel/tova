@@ -231,7 +231,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .transfer-select { width: 100%; padding: 14px 16px; padding-right: 40px; border: 1px solid #EDEDED; border-radius: 12px; font-size: 15px; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; outline: none; transition: border 0.2s; background: #ffffff; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%237E7E7E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
 .transfer-select:focus { border-color: #999; }
 .transfer-info { background: #F5F4F2; padding: 16px; border-radius: 12px; margin-bottom: 24px; font-size: 13px; color: #666; line-height: 1.5; }
-.transfer-button { width: 40%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-left: auto; }
+.transfer-button { width: 40%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-left: auto; display: block; }
 .transfer-button:hover { background: #333; }
 .transfer-button:disabled { opacity: 0.4; cursor: not-allowed; }
 .transfer-button:disabled:hover { background: #1a1a1a; }
@@ -241,11 +241,11 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .transfer-success-view.active { display: block; animation: fadeIn 0.4s ease; }
 .transfer-success-icon { width: 80px; height: 80px; margin: 0 auto 24px; background: #00A86B; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: successPop 0.5s ease; }
 .transfer-success-icon svg { width: 40px; height: 40px; stroke: #ffffff; stroke-width: 3; }
-.transfer-success-title { font-size: 24px; font-weight: 500; color: #fff; margin-bottom: 12px; }
+.transfer-success-title { font-size: 24px; font-weight: 500; color: #000; margin-bottom: 12px; }
 .transfer-success-text { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 12px; }
-.transfer-success-amount { font-size: 32px; font-weight: 500; color: #fff; margin-bottom: 24px; }
+.transfer-success-amount { font-size: 32px; font-weight: 500; color: #000; margin-bottom: 24px; }
 .transfer-success-info { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 32px; background: #F5F4F2; padding: 16px; border-radius: 12px; }
-.transfer-success-button { width: 30%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-left: auto; }
+.transfer-success-button { width: 30%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-left: auto; display: block; }
 .transfer-success-button:hover { background: #333; }
 
 /* Bank Modal Styles */
@@ -260,7 +260,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .bank-popup-close:hover { background: #E9E7E2; }
 .bank-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .bank-item { padding: 20px; border: 1px solid #EDEDED; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
-.bank-item:hover { border-color: #000000; background: #F7F6F5; }
+.bank-item:hover { border-color: #999; background: #F7F6F5; }
 .bank-logo { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 12px; color: #ffffff; }
 .bank-logo.swedbank { background: #fb4f00; }
 .bank-logo.nordea { background: #00005e; }
@@ -498,13 +498,13 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .avatar-dropdown-item span { flex: 1; }
 .mode-toggle { position: relative; display: inline-block; width: 68px; height: 34px; }
 .mode-toggle input { opacity: 0; width: 0; height: 0; }
-.mode-toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #F5F4F2; transition: 0.3s; border-radius: 34px; display: flex; align-items: center; justify-content: space-between; padding: 0 9px; }
+.mode-toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #F5F4F2; transition: 0.3s; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; padding: 0 9px; }
 #modeToggleItem:hover .mode-toggle-slider { background-color: #E9E7E3; }
 #modeToggleItem:hover .mode-toggle input:checked + .mode-toggle-slider { background-color: #404040; }
 .mode-toggle-icon { position: relative; z-index: 1; transition: all 0.3s; color: #999; pointer-events: none; display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; flex-shrink: 0; }
 .mode-toggle-icon.sun { color: #fff; }
 .mode-toggle-icon.moon { color: #999; }
-.mode-toggle-thumb { position: absolute; content: ""; height: 28px; width: 28px; left: 3px; top: 3px; background-color: #1a1a1a; transition: 0.3s; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.mode-toggle-thumb { position: absolute; content: ""; height: 28px; width: 28px; left: 3px; top: 3px; background-color: #1a1a1a; transition: 0.3s; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 .mode-toggle input:checked + .mode-toggle-slider { background-color: #303030; }
 .mode-toggle input:checked + .mode-toggle-slider .mode-toggle-icon.sun { color: #999; }
 .mode-toggle input:checked + .mode-toggle-slider .mode-toggle-icon.moon { color: #ffffff; }
