@@ -296,10 +296,10 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .account-bank-logo.other { background: #F5F4F2; color: #1a1a1a; }
 .account-item.selected .account-check { background: #1a1a1a; border-color: #1a1a1a; position: relative; }
 .account-item.selected .account-check::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 6px; height: 6px; background: #ffffff; border-radius: 50%; }
-.bank-connect-button { width: 40%; padding: 16px; background: #ffffff; color: #1a1a1a; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 24px; margin-left: auto; display: block; }
-.bank-connect-button:hover { background: #f0f0f0; }
+.bank-connect-button { width: 40%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 24px; margin-left: auto; display: block; }
+.bank-connect-button:hover { background: #333; }
 .bank-connect-button:disabled { opacity: 0.4; cursor: not-allowed; }
-.bank-connect-button:disabled:hover { background: #ffffff; }
+.bank-connect-button:disabled:hover { background: #1a1a1a; }
 .bank-connect-button.loading { position: relative; color: transparent; pointer-events: none; }
 .bank-connect-button.loading::after { content: ''; position: absolute; top: 50%; left: 50%; width: 20px; height: 20px; margin: -10px 0 0 -10px; border: 3px solid rgba(255,255,255,0.3); border-top-color: #ffffff; border-radius: 50%; animation: spin 0.8s linear infinite; }
 .bank-success-view { display: none; text-align: center; }
@@ -1462,8 +1462,8 @@ body.dark-mode {
     .chat-area { background: var(--bg-secondary); }
     .welcome-message { color: var(--text-primary); }
     .suggestions-heading { color: var(--text-primary); }
-    .suggestion-card { background: #303030; color: var(--text-primary); box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15); }
-    .suggestion-card:hover { box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.2); }
+    .suggestion-card { background: #303030; color: var(--text-primary); box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1); }
+    .suggestion-card:hover { box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15); }
     .suggestion-icon { background: #303030; border-color: #505050; color: #fff; }
     .suggestion-icon svg { stroke: #fff; }
     .help-text { color: var(--text-primary); }
@@ -1583,14 +1583,14 @@ body.dark-mode {
     .profile-logout-btn:hover { background: var(--bg-quaternary); }
     
     /* Modals */
-    .transfer-overlay, .bank-overlay, .isk-overlay, .podcast-overlay { background: rgba(0, 0, 0, 0.5); }
+    .transfer-overlay, .bank-overlay, .isk-overlay, .podcast-overlay { background: rgba(0, 0, 0, 0.7); }
     .transfer-popup, .bank-popup, .isk-popup, .podcast-popup { background: var(--bg-primary); box-shadow: var(--shadow-lg); }
     .transfer-popup-title, .bank-popup-title, .isk-popup-title, .podcast-popup-title { color: var(--text-primary); }
     .transfer-popup-close, .bank-popup-close, .isk-popup-close, .podcast-popup-close { background: var(--bg-tertiary); color: var(--text-primary); }
     .transfer-popup-close:hover, .bank-popup-close:hover, .isk-popup-close:hover, .podcast-popup-close:hover { background: var(--bg-quaternary); }
     .transfer-tabs, .bank-bankid-tabs { background: var(--bg-tertiary); }
     .transfer-tab, .bank-bankid-tab { color: var(--text-tertiary); }
-    .transfer-tab.active, .bank-bankid-tab.active { background: var(--bg-primary); color: var(--text-primary); }
+    .transfer-tab.active, .bank-bankid-tab.active { background: #606060; color: var(--text-primary); }
     .transfer-label, .isk-label { color: var(--text-secondary); }
     .transfer-input, .isk-input, .transfer-select { background: var(--bg-primary); color: var(--text-primary); border-color: var(--border-primary); }
     .transfer-input:focus, .isk-input:focus, .transfer-select:focus { border-color: var(--border-secondary); }
@@ -1631,7 +1631,12 @@ body.dark-mode {
     .isk-success-title { color: #fff; }
     .isk-success-button { background: #fff; color: #1a1a1a; }
     .isk-success-button:hover { background: #f0f0f0; }
-    .bank-connect-button.loading::after { border: 3px solid rgba(255,255,255,0.3); border-top-color: #ffffff; }
+    .bank-connect-button { background: #ffffff; color: #1a1a1a; }
+    .bank-connect-button:hover { background: #f0f0f0; }
+    .bank-connect-button:disabled:hover { background: #ffffff; }
+    .bank-connect-button.loading::after { border: 3px solid rgba(26,26,26,0.3); border-top-color: #1a1a1a; }
+    .bank-bankid-alternate { color: #fff; }
+    .account-item.selected .account-check { background: #606060; border-color: #606060; }
     .isk-checkbox { border-color: var(--border-primary); }
     .isk-checkbox-label { color: var(--text-primary); }
 }
