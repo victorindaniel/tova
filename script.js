@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
         welcomeMessage.textContent = `${randomGreeting.text}, Anna${punctuation}`;
     }
     
+    // AI Fund Box close button
+    const aiFundBox = document.getElementById('aiFundBox');
+    const aiFundClose = document.getElementById('aiFundClose');
+    
+    if (aiFundClose && aiFundBox) {
+        aiFundClose.addEventListener('click', function() {
+            aiFundBox.style.display = 'none';
+        });
+    }
+    
     // Get the active nav item (star icon)
     const activeNavItem = document.querySelector('.nav-item-sidebar.active');
     
@@ -106,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeProfileSidebar();
     initializePanelCollapse();
     initializeDarkMode();
+    initializeAvatarDropdown();
     initializeSearch();
     initializeChat();
     initializeSections();
@@ -1654,29 +1665,66 @@ function initializePanelCollapse() {
 
 // Dark mode functionality
 function initializeDarkMode() {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeLabel = document.getElementById('darkModeLabel');
+    const dropdownModeToggle = document.getElementById('dropdownModeToggle');
     
     // Check for saved dark mode preference
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
-        if (darkModeLabel) {
-            darkModeLabel.textContent = 'Ljust';
+        if (dropdownModeToggle) {
+            dropdownModeToggle.checked = true;
         }
     }
     
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            // Save preference
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
-            
-            // Update label text
-            if (darkModeLabel) {
-                darkModeLabel.textContent = isDark ? 'Ljust' : 'Mörkt';
+    // Dropdown mode toggle
+    if (dropdownModeToggle) {
+        dropdownModeToggle.addEventListener('change', () => {
+            const isDark = dropdownModeToggle.checked;
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
             }
+            localStorage.setItem('darkMode', isDark);
+        });
+    }
+}
+
+// Avatar dropdown functionality
+function initializeAvatarDropdown() {
+    const topBarAvatar = document.getElementById('topBarAvatar');
+    const avatarDropdown = document.getElementById('avatarDropdown');
+    const modeToggleItem = document.getElementById('modeToggleItem');
+    const dropdownModeToggle = document.getElementById('dropdownModeToggle');
+    
+    if (topBarAvatar && avatarDropdown) {
+        // Toggle dropdown on avatar click
+        topBarAvatar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            avatarDropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!avatarDropdown.contains(e.target) && e.target !== topBarAvatar) {
+                avatarDropdown.classList.remove('active');
+            }
+        });
+        
+        // Prevent dropdown from closing when clicking inside
+        avatarDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+    
+    // Make entire mode toggle item clickable
+    if (modeToggleItem && dropdownModeToggle) {
+        modeToggleItem.addEventListener('click', (e) => {
+            // Don't trigger if clicking directly on the toggle
+            if (e.target.closest('.mode-toggle')) {
+                return;
+            }
+            dropdownModeToggle.click();
         });
     }
 }
