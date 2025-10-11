@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeDarkMode();
     initializeAvatarDropdown();
     initializeMobileMenu();
-    initializeMobileKeyboard();
     initializeSearch();
     initializeChat();
     initializeSections();
@@ -1838,67 +1837,6 @@ function initializeMobileMenu() {
             });
         });
     }
-}
-
-// Mobile keyboard handling
-function initializeMobileKeyboard() {
-    // Only run on mobile devices
-    if (window.innerWidth > 768) return;
-    
-    const chatInput = document.getElementById('chatInput');
-    const chatInputActive = document.getElementById('chatInputActive');
-    const topBar = document.querySelector('.top-bar');
-    const chatArea = document.querySelector('.chat-area');
-    
-    let initialScrollY = 0;
-    let initialInnerHeight = window.innerHeight;
-    
-    const handleFocus = (input) => {
-        // Store the current scroll position
-        initialScrollY = window.scrollY;
-        
-        // Prevent scrolling by setting fixed positions
-        if (topBar) {
-            topBar.style.position = 'fixed';
-            topBar.style.top = '0';
-        }
-        
-        // Keep the current scroll position
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.body.style.position = 'fixed';
-            document.body.style.top = '0';
-            document.body.style.width = '100%';
-        }, 0);
-    };
-    
-    const handleBlur = () => {
-        // Restore normal scroll behavior
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        
-        // Restore scroll position
-        window.scrollTo(0, 0);
-    };
-    
-    if (chatInput) {
-        chatInput.addEventListener('focus', () => handleFocus(chatInput));
-        chatInput.addEventListener('blur', handleBlur);
-    }
-    
-    if (chatInputActive) {
-        chatInputActive.addEventListener('focus', () => handleFocus(chatInputActive));
-        chatInputActive.addEventListener('blur', handleBlur);
-    }
-    
-    // Prevent resize behavior
-    window.visualViewport?.addEventListener('resize', (e) => {
-        if (document.activeElement === chatInput || document.activeElement === chatInputActive) {
-            // Keep scroll at top when keyboard appears
-            window.scrollTo(0, 0);
-        }
-    });
 }
 
 // Profile sidebar functionality
