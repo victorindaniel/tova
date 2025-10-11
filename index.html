@@ -12,7 +12,7 @@
 
     <body>             
     <div class="left-sidebar collapsed">
-        <div class="sidebar-logo">
+        <div class="sidebar-logo" id="sidebarLogo">
             <img src="img/logo-mobile-light.svg" alt="Tova" class="sidebar-logo-img light" />
             <img src="img/logo-mobile-dark.svg" alt="Tova" class="sidebar-logo-img dark" />
             <span class="sidebar-logo-collapsed">t</span>
@@ -513,9 +513,9 @@
                 <div class="transfer-field">
                     <label class="transfer-label">Välj bankkonto</label>
                     <select class="transfer-select">
-                        <option>Swedbank **** 1234</option>
-                        <option>Nordea **** 5678</option>
-                        <option>SEB **** 9012</option>
+                        <option>Blåbank **** 1234</option>
+                        <option>Norrbank **** 5678</option>
+                        <option>Östbank **** 9012</option>
                     </select>
                 </div>
                 
@@ -531,9 +531,9 @@
                 <div class="transfer-field">
                     <label class="transfer-label">Välj bankkonto</label>
                     <select class="transfer-select">
-                        <option>Swedbank **** 1234</option>
-                        <option>Nordea **** 5678</option>
-                        <option>SEB **** 9012</option>
+                        <option>Blåbank **** 1234</option>
+                        <option>Norrbank **** 5678</option>
+                        <option>Östbank **** 9012</option>
                     </select>
                 </div>
                 
@@ -584,36 +584,36 @@
                 <p class="bank-popup-subtitle">Anslut ditt bankkonto för att enkelt sätta in och ta ut pengar från ditt Tova-konto.</p>
                 
                 <div class="bank-list">
-                    <div class="bank-item" data-bank="swedbank" onclick="window.updateBankLogos('SWED', 'swedbank', 'Swedbank')">
-                        <div class="bank-logo swedbank">SWED</div>
+                    <div class="bank-item" data-bank="blabank" onclick="window.updateBankLogos('SWED', 'blabank', 'Swedbank')">
+                        <div class="bank-logo blabank">SWED</div>
                         <div class="bank-name">Swedbank</div>
                     </div>
-                    <div class="bank-item" data-bank="nordea" onclick="window.updateBankLogos('NDA', 'nordea', 'Nordea')">
-                        <div class="bank-logo nordea">NDA</div>
+                    <div class="bank-item" data-bank="norrbank" onclick="window.updateBankLogos('NDA', 'norrbank', 'Nordea')">
+                        <div class="bank-logo norrbank">NDA</div>
                         <div class="bank-name">Nordea</div>
                     </div>
-                    <div class="bank-item" data-bank="seb" onclick="window.updateBankLogos('SEB', 'seb', 'SEB')">
-                        <div class="bank-logo seb">SEB</div>
+                    <div class="bank-item" data-bank="ostbank" onclick="window.updateBankLogos('SEB', 'ostbank', 'SEB')">
+                        <div class="bank-logo ostbank">SEB</div>
                         <div class="bank-name">SEB</div>
                     </div>
-                    <div class="bank-item" data-bank="handelsbanken" onclick="window.updateBankLogos('HB', 'handelsbanken', 'Handelsbanken')">
-                        <div class="bank-logo handelsbanken">HB</div>
+                    <div class="bank-item" data-bank="vastbank" onclick="window.updateBankLogos('HB', 'vastbank', 'Handelsbanken')">
+                        <div class="bank-logo vastbank">HB</div>
                         <div class="bank-name">Handelsbanken</div>
                     </div>
-                    <div class="bank-item" data-bank="skandiabanken" onclick="window.updateBankLogos('SB', 'skandiabanken', 'Skandiabanken')">
-                        <div class="bank-logo skandiabanken">SB</div>
+                    <div class="bank-item" data-bank="sydbank" onclick="window.updateBankLogos('SB', 'sydbank', 'Skandiabanken')">
+                        <div class="bank-logo sydbank">SB</div>
                         <div class="bank-name">Skandiabanken</div>
                     </div>
-                    <div class="bank-item" data-bank="avanza" onclick="window.updateBankLogos('AV', 'avanza', 'Avanza')">
-                        <div class="bank-logo avanza">AV</div>
+                    <div class="bank-item" data-bank="vastavik" onclick="window.updateBankLogos('AV', 'vastavik', 'Avanza')">
+                        <div class="bank-logo vastavik">AV</div>
                         <div class="bank-name">Avanza</div>
                     </div>
-                    <div class="bank-item" data-bank="lansforsakringar" onclick="window.updateBankLogos('LF', 'lansforsakringar', 'Länsförsäkringar')">
-                        <div class="bank-logo lansforsakringar">LF</div>
+                    <div class="bank-item" data-bank="nordvast" onclick="window.updateBankLogos('LF', 'nordvast', 'Länsförsäkringar')">
+                        <div class="bank-logo nordvast">LF</div>
                         <div class="bank-name">Länsförsäkringar</div>
                     </div>
-                    <div class="bank-item" data-bank="ica" onclick="window.updateBankLogos('ICA', 'ica', 'ICA Banken')">
-                        <div class="bank-logo ica">ICA</div>
+                    <div class="bank-item" data-bank="prima" onclick="window.updateBankLogos('ICA', 'prima', 'ICA Banken')">
+                        <div class="bank-logo prima">ICA</div>
                         <div class="bank-name">ICA Banken</div>
                     </div>
                     <div class="bank-item" data-bank="other" onclick="window.updateBankLogos('+', 'other', 'Annan bank')">
@@ -742,7 +742,10 @@
                     </div>
                 </div>
                 
-                <button class="bank-connect-button" id="connectBankButton" disabled>Anslut konto</button>
+                <div class="bank-button-container">
+                    <button class="bank-cancel-button" id="cancelBankSelection">Avbryt</button>
+                    <button class="bank-connect-button" id="connectBankButton" disabled>Anslut konto</button>
+                </div>
             </div>
             
             <div class="bank-step bank-success-view" id="bankSuccessStep">
@@ -1184,8 +1187,8 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">Apple Inc.</div>
-                            <div class="package-sidebar-holding-detail">AAPL · USA</div>
+                            <div class="package-sidebar-holding-name">Zenith Tech Inc.</div>
+                            <div class="package-sidebar-holding-detail">ZNTH · USA</div>
                         </div>
                         <div class="package-sidebar-holding-value">2.5%</div>
                     </div>
@@ -1204,8 +1207,8 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">Microsoft Corp.</div>
-                            <div class="package-sidebar-holding-detail">MSFT · USA</div>
+                            <div class="package-sidebar-holding-name">Nova Systems Corp.</div>
+                            <div class="package-sidebar-holding-detail">NOVA · USA</div>
                         </div>
                         <div class="package-sidebar-holding-value">2.0%</div>
                     </div>
@@ -1218,8 +1221,8 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">Volvo Group</div>
-                            <div class="package-sidebar-holding-detail">VOLV B · Sverige</div>
+                            <div class="package-sidebar-holding-name">Stella Motors</div>
+                            <div class="package-sidebar-holding-detail">STLA B · Sverige</div>
                         </div>
                         <div class="package-sidebar-holding-value">1.5%</div>
                     </div>
@@ -1238,7 +1241,7 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">Swedbank Robur Räntefond Kort</div>
+                            <div class="package-sidebar-holding-name">Blåbank Capital Räntefond Kort</div>
                             <div class="package-sidebar-holding-detail">Avgift 0.25%</div>
                         </div>
                         <div class="package-sidebar-holding-value">18%</div>
@@ -1252,7 +1255,7 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">Nordea Obligationsfond</div>
+                            <div class="package-sidebar-holding-name">Norrbank Obligationsfond</div>
                             <div class="package-sidebar-holding-detail">Avgift 0.30%</div>
                         </div>
                         <div class="package-sidebar-holding-value">18%</div>
@@ -1266,7 +1269,7 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">SEB Obligationsfond</div>
+                            <div class="package-sidebar-holding-name">Östbank Obligationsfond</div>
                             <div class="package-sidebar-holding-detail">Avgift 0.28%</div>
                         </div>
                         <div class="package-sidebar-holding-value">18%</div>
@@ -1280,7 +1283,7 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">Handelsbanken Räntefond</div>
+                            <div class="package-sidebar-holding-name">Västbank Räntefond</div>
                             <div class="package-sidebar-holding-detail">Avgift 0.22%</div>
                         </div>
                         <div class="package-sidebar-holding-value">18%</div>
@@ -1300,7 +1303,7 @@
                             </svg>
                         </div>
                         <div class="package-sidebar-holding-info">
-                            <div class="package-sidebar-holding-name">Vanguard Global Bond Index</div>
+                            <div class="package-sidebar-holding-name">Pioneer Global Bond Index</div>
                             <div class="package-sidebar-holding-detail">Avgift 0.15%</div>
                         </div>
                         <div class="package-sidebar-holding-value">18%</div>

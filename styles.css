@@ -165,7 +165,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 /* Left Sidebar Styles */
 .left-sidebar { width: 300px; background: var(--bg-primary); border-right: 1px solid var(--border-primary); display: flex; flex-direction: column; padding: 24px; transition: all 0.3s ease; position: relative; z-index: 30; }
 .left-sidebar.collapsed { width: 88px; padding: 24px 6px; }
-.sidebar-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; position: relative; justify-content: flex-start; }
+.sidebar-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; position: relative; justify-content: flex-start; cursor: pointer; transition: opacity 0.2s; }
+.sidebar-logo:hover { opacity: 0.7; }
 .left-sidebar.collapsed .sidebar-logo { justify-content: center; }
 .sidebar-logo-img { height: 24px; width: auto; transition: opacity 0.3s ease; }
 .sidebar-logo-img.light { display: none; }
@@ -262,14 +263,14 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .bank-item { padding: 20px; border: 1px solid #EDEDED; border-radius: 12px; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .bank-item:hover { border-color: #999; background: #F7F6F5; }
 .bank-logo { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 12px; color: #ffffff; }
-.bank-logo.swedbank { background: #fb4f00; }
-.bank-logo.nordea { background: #00005e; }
-.bank-logo.seb { background: #003824; }
-.bank-logo.handelsbanken { background: #005fa5; }
-.bank-logo.skandiabanken { background: #038069; }
-.bank-logo.avanza { background: #07383e; }
-.bank-logo.lansforsakringar { background: #005aa0; }
-.bank-logo.ica { background: #e13205; }
+.bank-logo.blabank { background: #fb4f00; }
+.bank-logo.norrbank { background: #00005e; }
+.bank-logo.ostbank { background: #003824; }
+.bank-logo.vastbank { background: #005fa5; }
+.bank-logo.sydbank { background: #038069; }
+.bank-logo.vastavik { background: #07383e; }
+.bank-logo.nordvast { background: #005aa0; }
+.bank-logo.prima { background: #e13205; }
 .bank-logo.other { background: #F5F4F2; color: #1a1a1a; }
 .bank-name { font-size: 14px; font-weight: 500; color: #1a1a1a; }
 .bank-steps-container { min-height: 400px; }
@@ -285,18 +286,21 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .account-number { font-size: 13px; color: #666; }
 .account-check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #EDEDED; flex-shrink: 0; }
 .account-bank-logo { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 12px; color: #ffffff; flex-shrink: 0; background: #E0E0E0; }
-.account-bank-logo.swedbank { background: #fb4f00; }
-.account-bank-logo.nordea { background: #00005e; }
-.account-bank-logo.seb { background: #003824; }
-.account-bank-logo.handelsbanken { background: #005fa5; }
-.account-bank-logo.skandiabanken { background: #038069; }
-.account-bank-logo.avanza { background: #07383e; }
-.account-bank-logo.lansforsakringar { background: #005aa0; }
-.account-bank-logo.ica { background: #e13205; }
+.account-bank-logo.blabank { background: #fb4f00; }
+.account-bank-logo.norrbank { background: #00005e; }
+.account-bank-logo.ostbank { background: #003824; }
+.account-bank-logo.vastbank { background: #005fa5; }
+.account-bank-logo.sydbank { background: #038069; }
+.account-bank-logo.vastavik { background: #07383e; }
+.account-bank-logo.nordvast { background: #005aa0; }
+.account-bank-logo.prima { background: #e13205; }
 .account-bank-logo.other { background: #F5F4F2; color: #1a1a1a; }
 .account-item.selected .account-check { background: #1a1a1a; border-color: #1a1a1a; position: relative; }
 .account-item.selected .account-check::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 6px; height: 6px; background: #ffffff; border-radius: 50%; }
-.bank-connect-button { width: 40%; padding: 16px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin-top: 24px; margin-left: auto; display: block; }
+.bank-button-container { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
+.bank-cancel-button { padding: 16px 24px; background: #F5F4F2; color: #1a1a1a; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.bank-cancel-button:hover { background: #E9E7E2; }
+.bank-connect-button { padding: 16px 24px; background: #1a1a1a; color: #ffffff; border: none; border-radius: 12px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 .bank-connect-button:hover { background: #333; }
 .bank-connect-button:disabled { opacity: 0.4; cursor: not-allowed; }
 .bank-connect-button:disabled:hover { background: #1a1a1a; }
@@ -1679,6 +1683,8 @@ body.dark-mode {
     .isk-success-title { color: #fff; }
     .isk-success-button { background: #fff; color: #1a1a1a; }
     .isk-success-button:hover { background: #f0f0f0; }
+    .bank-cancel-button { background: var(--bg-tertiary); color: var(--text-primary); }
+    .bank-cancel-button:hover { background: var(--bg-quaternary); }
     .bank-connect-button { background: #ffffff; color: #1a1a1a; }
     .bank-connect-button:hover { background: #f0f0f0; }
     .bank-connect-button:disabled:hover { background: #ffffff; }

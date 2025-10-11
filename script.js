@@ -67,6 +67,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Reset to welcome page when clicking sidebar logo
+    const sidebarLogo = document.getElementById('sidebarLogo');
+    const textarea = document.getElementById('chatInput');
+    const textareaActive = document.getElementById('chatInputActive');
+    const sendButton = document.getElementById('sendButton');
+    const sendButtonActive = document.getElementById('sendButtonActive');
+    
+    if (sidebarLogo) {
+        sidebarLogo.addEventListener('click', function() {
+            // Reset chat to default state
+            chatMessages.classList.remove('active');
+            chatMessages.innerHTML = '';
+            welcomeContent.classList.remove('hidden');
+            chatInputContainer.style.display = 'none';
+            document.querySelector('.chat-area').classList.remove('chat-active');
+            
+            // Reset input fields
+            if (textarea) {
+                textarea.value = '';
+                textarea.style.height = '51px';
+            }
+            if (textareaActive) {
+                textareaActive.value = '';
+                textareaActive.style.height = '51px';
+            }
+            if (sendButton) sendButton.disabled = true;
+            if (sendButtonActive) sendButtonActive.disabled = true;
+            
+            // Reset first message flag
+            if (typeof isFirstMessage !== 'undefined') {
+                isFirstMessage = true;
+            }
+        });
+    }
 
     // Restore sidebar state from localStorage (default: collapsed)
     const savedSidebarState = localStorage.getItem('sidebarCollapsed');
@@ -319,6 +354,7 @@ function initializeBankPopup() {
     const bankItems = document.querySelectorAll('.bank-item');
     const accountItems = document.querySelectorAll('.account-item');
     const connectBankButton = document.getElementById('connectBankButton');
+    const cancelBankSelection = document.getElementById('cancelBankSelection');
     const bankSuccessStep = document.getElementById('bankSuccessStep');
     const bankSuccessDone = document.getElementById('bankSuccessDone');
     
@@ -541,6 +577,37 @@ function initializeBankPopup() {
                     bankSelectStep.style.opacity = '1';
                 });
             }, 10);
+        });
+    }
+    
+    // Cancel bank selection button
+    if (cancelBankSelection) {
+        cancelBankSelection.addEventListener('click', function() {
+            // Animate current step out to right
+            accountSelectStep.style.transform = 'translateX(100%)';
+            accountSelectStep.style.opacity = '0';
+            
+            // Prepare previous step (start from left)
+            bankSelectStep.style.transform = 'translateX(-100%)';
+            bankSelectStep.style.opacity = '0';
+            
+            // After a brief moment, slide in the bank step
+            setTimeout(() => {
+                accountSelectStep.classList.remove('active');
+                bankSelectStep.classList.add('active');
+                
+                // Reset title
+                document.getElementById('bankPopupTitle').textContent = 'Anslut konto';
+                
+                requestAnimationFrame(() => {
+                    bankSelectStep.style.transform = 'translateX(0)';
+                    bankSelectStep.style.opacity = '1';
+                });
+            }, 10);
+            
+            // Deselect accounts
+            accountItems.forEach(acc => acc.classList.remove('selected'));
+            connectBankButton.disabled = true;
         });
     }
     
@@ -1901,24 +1968,24 @@ function initializeSearch() {
     const allFunds = [
         { name: 'Tova Aktiefond', fee: '0,92%', return: '+5,24%', positive: true, country: 'se', info: 'Bred svensk aktiefond' },
         { name: 'Global Auto 6', fee: '2,45%', return: '+9,80%', positive: true, country: 'se', info: 'Global indexfond' },
-        { name: 'MS INFV Handel', fee: '3,60%', return: '-0,97%', positive: false, country: 'se', info: 'Handelsbanken fond' },
+        { name: 'MS INFV Handel', fee: '3,60%', return: '-0,97%', positive: false, country: 'se', info: 'Västbank fond' },
         { name: 'BG Aktiefond', fee: '1,18%', return: '+4,22%', positive: true, country: 'se', info: 'Nordisk aktiefond' },
         { name: 'Nuro Bank', fee: '1,38%', return: '+1,50%', positive: true, country: 'se', info: 'Europeisk tillväxt' },
-        { name: 'Swedbank Robur Ny Teknik', fee: '1,65%', return: '+12,50%', positive: true, country: 'se', info: 'Global teknikfond' },
-        { name: 'Nordea Emerging Stars', fee: '2,10%', return: '+7,30%', positive: true, country: 'se', info: 'Tillväxtmarknader' },
-        { name: 'SEB Europafond', fee: '1,45%', return: '+6,85%', positive: true, country: 'se', info: 'Europeiska aktier' },
-        { name: 'Handelsbanken Global Index', fee: '0,15%', return: '+8,90%', positive: true, country: 'se', info: 'Global indexfond' },
-        { name: 'AMF Aktiefond Sverige', fee: '0,38%', return: '+11,20%', positive: true, country: 'se', info: 'Svenska aktier' },
-        { name: 'Länsförsäkringar Global Index', fee: '0,20%', return: '+9,15%', positive: true, country: 'se', info: 'Global indexfond' },
+        { name: 'Blåbank Capital Ny Teknik', fee: '1,65%', return: '+12,50%', positive: true, country: 'se', info: 'Global teknikfond' },
+        { name: 'Norrbank Emerging Stars', fee: '2,10%', return: '+7,30%', positive: true, country: 'se', info: 'Tillväxtmarknader' },
+        { name: 'Östbank Europafond', fee: '1,45%', return: '+6,85%', positive: true, country: 'se', info: 'Europeiska aktier' },
+        { name: 'Västbank Global Index', fee: '0,15%', return: '+8,90%', positive: true, country: 'se', info: 'Global indexfond' },
+        { name: 'Kapital Aktiefond Sverige', fee: '0,38%', return: '+11,20%', positive: true, country: 'se', info: 'Svenska aktier' },
+        { name: 'Nordväst Global Index', fee: '0,20%', return: '+9,15%', positive: true, country: 'se', info: 'Global indexfond' },
         { name: 'Skandia Sverige Hållbar', fee: '0,85%', return: '+7,45%', positive: true, country: 'se', info: 'Hållbara svenska aktier' },
         { name: 'Öhman Sverige Hållbar', fee: '1,20%', return: '+6,60%', positive: true, country: 'se', info: 'ESG-fond Sverige' },
         { name: 'Spiltan Aktiefond Investmentbolag', fee: '0,95%', return: '+13,40%', positive: true, country: 'se', info: 'Svenska investmentbolag' },
-        { name: 'Carnegie Sverigefond', fee: '1,55%', return: '+8,25%', positive: true, country: 'se', info: 'Aktivt förvaltad' },
-        { name: 'Didner & Gerge Aktiefond', fee: '1,75%', return: '+10,10%', positive: true, country: 'se', info: 'Koncentrerad portfölj' },
-        { name: 'Apple AAPL', fee: '-', return: '+28,50%', positive: true, country: 'us', info: 'Teknologi & consumer' },
-        { name: 'Microsoft MSFT', fee: '-', return: '+31,20%', positive: true, country: 'us', info: 'Molntjänster & AI' },
-        { name: 'Tesla TSLA', fee: '-', return: '+45,80%', positive: true, country: 'us', info: 'Elbilar & energi' },
-        { name: 'Amazon AMZN', fee: '-', return: '+38,90%', positive: true, country: 'us', info: 'E-handel & cloud' },
+        { name: 'Skandia Sverigefond', fee: '1,55%', return: '+8,25%', positive: true, country: 'se', info: 'Aktivt förvaltad' },
+        { name: 'Nordic Capital Aktiefond', fee: '1,75%', return: '+10,10%', positive: true, country: 'se', info: 'Koncentrerad portfölj' },
+        { name: 'Zenith ZNTH', fee: '-', return: '+28,50%', positive: true, country: 'us', info: 'Teknologi & consumer' },
+        { name: 'Nova NOVA', fee: '-', return: '+31,20%', positive: true, country: 'us', info: 'Molntjänster & AI' },
+        { name: 'Elektron ELKT', fee: '-', return: '+45,80%', positive: true, country: 'us', info: 'Elbilar & energi' },
+        { name: 'Omnix OMNX', fee: '-', return: '+38,90%', positive: true, country: 'us', info: 'E-handel & cloud' },
         { name: 'Nvidia NVDA', fee: '-', return: '+125,60%', positive: true, country: 'us', info: 'GPU & AI-chips' },
         { name: 'Meta META', fee: '-', return: '+42,30%', positive: true, country: 'us', info: 'Sociala medier & VR' },
         { name: 'Alphabet GOOGL', fee: '-', return: '+35,70%', positive: true, country: 'us', info: 'Sökmotorer & AI' },
@@ -2231,7 +2298,7 @@ function initializeChat() {
             } else if (lm.includes('skillnaden mellan aktier och fonder')) {
                 response = 'Aktier är andelar i enskilda företag - när du köper en Apple-aktie äger du en liten del av Apple. Fonder är istället "korgar" med många olika aktier eller obligationer. När du köper en fond sprider du automatiskt din risk över många företag. Fonder är ofta ett bra val för dig som vill ha enklare och mer diversifierad investering, medan aktier ger dig mer kontroll men kräver mer arbete och kunskap.';
             } else if (lm.includes('fonder')) {
-                response = 'Jag har hittat flera intressanta fonder åt dig. Bland de mest populära just nu är Tova Aktiefond med 0,92% avgift och +5,24% avkastning, samt Swedbank Robur Ny Teknik med 1,65% avgift och +12,50% avkastning. Vill du veta mer om någon specifik fond?';
+                response = 'Jag har hittat flera intressanta fonder åt dig. Bland de mest populära just nu är Tova Aktiefond med 0,92% avgift och +5,24% avkastning, samt Blåbank Capital Ny Teknik med 1,65% avgift och +12,50% avkastning. Vill du veta mer om någon specifik fond?';
             } else if (lm.includes('spara')) {
                 response = 'En bra tumregel är att spara minst 10-15% av din månadsinkomst. Om du tjänar 30 000 kr per månad bör du sträva efter att spara 3 000-4 500 kr. Det viktiga är att börja någonstans och öka successivt!';
             } else {
@@ -2404,7 +2471,7 @@ function initializeChat() {
                             <div class="fund-rank">2</div>
                             <div class="fund-name">
                                 <div class="fund-flag">${getFlagIcon('us')}</div>
-                                <div class="fund-title">Swedbank Robur Ny Teknik</div>
+                                <div class="fund-title">Blåbank Capital Ny Teknik</div>
                             </div>
                             <div class="fund-fee">1,65%</div>
                             <div class="fund-return positive">+12,50%</div>
@@ -2416,7 +2483,7 @@ function initializeChat() {
                             <div class="fund-rank">3</div>
                             <div class="fund-name">
                                 <div class="fund-flag">${getFlagIcon('se')}</div>
-                                <div class="fund-title">Nordea Sverige Index</div>
+                                <div class="fund-title">Norrbank Sverige Index</div>
                             </div>
                             <div class="fund-fee">0,20%</div>
                             <div class="fund-return positive">+8,75%</div>
@@ -2428,7 +2495,7 @@ function initializeChat() {
                             <div class="fund-rank">4</div>
                             <div class="fund-name">
                                 <div class="fund-flag">${getFlagIcon('us')}</div>
-                                <div class="fund-title">Handelsbanken Global Index</div>
+                                <div class="fund-title">Västbank Global Index</div>
                             </div>
                             <div class="fund-fee">0,15%</div>
                             <div class="fund-return positive">+6,32%</div>
@@ -2440,7 +2507,7 @@ function initializeChat() {
                             <div class="fund-rank">5</div>
                             <div class="fund-name">
                                 <div class="fund-flag">${getFlagIcon('us')}</div>
-                                <div class="fund-title">SEB Global Index</div>
+                                <div class="fund-title">Östbank Global Index</div>
                             </div>
                             <div class="fund-fee">0,18%</div>
                             <div class="fund-return positive">+7,18%</div>
@@ -2452,7 +2519,7 @@ function initializeChat() {
                             <div class="fund-rank">6</div>
                             <div class="fund-name">
                                 <div class="fund-flag">${getFlagIcon('se')}</div>
-                                <div class="fund-title">AMF Aktiefond Världen</div>
+                                <div class="fund-title">Kapital Aktiefond Världen</div>
                             </div>
                             <div class="fund-fee">0,25%</div>
                             <div class="fund-return positive">+9,45%</div>
@@ -2464,7 +2531,7 @@ function initializeChat() {
                             <div class="fund-rank">7</div>
                             <div class="fund-name">
                                 <div class="fund-flag">${getFlagIcon('us')}</div>
-                                <div class="fund-title">Länsförsäkringar Global Index</div>
+                                <div class="fund-title">Nordväst Global Index</div>
                             </div>
                             <div class="fund-fee">0,22%</div>
                             <div class="fund-return positive">+7,92%</div>
@@ -2488,7 +2555,7 @@ function initializeChat() {
                             <div class="fund-rank">9</div>
                             <div class="fund-name">
                                 <div class="fund-flag">${getFlagIcon('se')}</div>
-                                <div class="fund-title">Avanza Zero</div>
+                                <div class="fund-title">Västavik Zero</div>
                             </div>
                             <div class="fund-fee">0,00%</div>
                             <div class="fund-return positive">+8,33%</div>
