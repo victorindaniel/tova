@@ -1808,8 +1808,19 @@ body.dark-mode {
         opacity: 1;
         visibility: visible;
     }
+    .mobile-menu-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #000;
+    }
+    .mobile-avatar-name {
+        padding: 12px 24px 4px 24px;
+        color: #000;
+        font-size: 24px;
+        font-weight: 600;
+    }
     .mobile-avatar-email {
-        padding: 12px 24px;
+        padding: 0 24px 12px 24px;
         color: #666;
         font-size: 14px;
     }
@@ -1821,7 +1832,6 @@ body.dark-mode {
         cursor: pointer;
         border-radius: 12px;
         transition: background 0.2s;
-        margin: 0 4px;
     }
     .mobile-mode-toggle-item:hover {
         background: #F5F4F2;
@@ -1952,7 +1962,7 @@ body.dark-mode {
     }
     .left-panel.collapsed ~ .chat-area { margin-left: 0 !important; }
     .chat-area.chat-active { 
-        padding-bottom: 140px;
+        padding-bottom: 80px;
     }
     
     /* Welcome content centering */
@@ -2010,6 +2020,7 @@ body.dark-mode {
     .chat-input::placeholder { font-size: 14px; }
     .input-actions { position: absolute; bottom: 26px; right: 22px; left: auto; transform: none; justify-content: flex-end; margin: 0; }
     .input-action-btn { width: 40px; height: 40px; border-radius: 999px; }
+    .input-action-btn.voice { border: none; }
     .input-action-btn.attach { display: none; }
     .input-container::before { display: block !important; height: 48px !important; background: #F7F6F5 !important; }
     
@@ -2065,6 +2076,12 @@ body.dark-mode .mobile-menu-item.active svg {
 }
 body.dark-mode .mobile-menu-item:not(.active):hover {
     background: var(--bg-tertiary);
+}
+body.dark-mode .mobile-menu-title {
+    color: var(--text-primary);
+}
+body.dark-mode .mobile-avatar-name {
+    color: var(--text-primary);
 }
 body.dark-mode .mobile-avatar-email {
     color: #999;
