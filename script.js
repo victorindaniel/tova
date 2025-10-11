@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset input fields
             if (textarea) {
                 textarea.value = '';
-                textarea.style.height = 'auto';
+                textarea.style.height = '51px';
             }
             if (textareaActive) {
                 textareaActive.value = '';
-                textareaActive.style.height = 'auto';
+                textareaActive.style.height = '51px';
             }
             if (sendButton) sendButton.disabled = true;
             if (sendButtonActive) sendButtonActive.disabled = true;
@@ -2094,15 +2094,27 @@ function initializeChat() {
     if (sendButton) sendButton.disabled = true;
     if (sendButtonActive) sendButtonActive.disabled = true;
 
+    // Auto-grow textarea function
+    const autoGrowTextarea = (element) => {
+        element.style.height = 'auto';
+        element.style.height = Math.min(element.scrollHeight, 150) + 'px';
+    };
+
     if (textarea) {
+        // Initialize height
+        textarea.style.height = '51px';
         textarea.addEventListener('input', function() { 
-            sendButton.disabled = this.value.trim() === ''; 
+            sendButton.disabled = this.value.trim() === '';
+            autoGrowTextarea(this);
         });
     }
     
     if (textareaActive) {
+        // Initialize height
+        textareaActive.style.height = '51px';
         textareaActive.addEventListener('input', function() { 
-            sendButtonActive.disabled = this.value.trim() === ''; 
+            sendButtonActive.disabled = this.value.trim() === '';
+            autoGrowTextarea(this);
         });
     }
 
@@ -2601,7 +2613,7 @@ function initializeChat() {
             chatArea.classList.add('chat-active');
             addMessage(msg, true);
             input.value = '';
-            input.style.height = 'auto';
+            input.style.height = '51px';
             sendButton.disabled = true;
             sendButtonActive.disabled = true;
             
