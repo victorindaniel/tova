@@ -167,10 +167,10 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .left-sidebar.collapsed { width: 88px; padding: 24px 6px; }
 .sidebar-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 32px; position: relative; justify-content: flex-start; }
 .left-sidebar.collapsed .sidebar-logo { justify-content: center; }
-.sidebar-logo-text { font-size: 28px; font-weight: 600; color: var(--text-primary); transition: opacity 0.3s ease, width 0.3s ease; }
-.left-sidebar.collapsed .sidebar-logo-text { opacity: 0; width: 0; overflow: hidden; }
-.sidebar-badge { background: var(--text-primary); color: var(--bg-primary); padding: 6px 10px; border-radius: 8px; font-size: 13px; font-weight: 500; transition: opacity 0.3s ease, width 0.3s ease; margin-top: 4px; }
-.left-sidebar.collapsed .sidebar-badge { opacity: 0; width: 0; overflow: hidden; }
+.sidebar-logo-img { height: 24px; width: auto; transition: opacity 0.3s ease; }
+.sidebar-logo-img.light { display: none; }
+.sidebar-logo-img.dark { display: block; }
+.left-sidebar.collapsed .sidebar-logo-img { opacity: 0; width: 0; overflow: hidden; }
 .sidebar-logo-collapsed { display: none; font-size: 28px; font-weight: 600; color: var(--text-primary); transition: opacity 0.3s ease; position: absolute; left: 50%; transform: translateX(-50%); }
 .left-sidebar.collapsed .sidebar-logo-collapsed { display: block; opacity: 1; }
 .sidebar-nav { display: flex; flex-direction: column; gap: 0; flex: 1; }
@@ -1414,8 +1414,9 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 body.dark-mode {
     /* Sidebars and panels */
     .left-sidebar { background: var(--bg-primary); border-right-color: #242424; }
-    .sidebar-logo-text, .sidebar-logo-collapsed { color: var(--text-primary); }
-    .sidebar-badge { background: var(--text-primary); color: var(--bg-primary); }
+    .sidebar-logo-img.dark { display: none; }
+    .sidebar-logo-img.light { display: block; }
+    .sidebar-logo-collapsed { color: var(--text-primary); }
     .nav-item-sidebar { color: var(--text-tertiary); }
     .nav-item-sidebar:hover { background: var(--bg-tertiary); }
     .nav-item-sidebar.active { background: var(--bg-tertiary); color: var(--text-primary); }
