@@ -1433,13 +1433,15 @@ body.dark-mode {
     .sidebar-logo-img.light { display: block; }
     .sidebar-logo-collapsed { color: var(--text-primary); }
     .nav-item-sidebar { color: var(--text-tertiary); }
-    .nav-item-sidebar:hover { background: var(--bg-tertiary); }
+    .nav-item-sidebar:hover { background: var(--bg-tertiary); color: #fff; }
     .nav-item-sidebar.active { background: var(--bg-tertiary); color: var(--text-primary); }
     .nav-item-sidebar svg { stroke: var(--text-tertiary); }
+    .nav-item-sidebar:hover svg { stroke: #fff; }
     .nav-item-sidebar.active svg { stroke: var(--text-primary); }
-    .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(100%); }
+    .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(60%); }
     #minimizeBtn:hover .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(100%); }
     .nav-label-collapsed { color: #999; }
+    .nav-item-sidebar:hover .nav-label-collapsed { color: #fff; }
     .nav-item-sidebar.active .nav-label-collapsed { color: #fff; }
     .sidebar-divider-line { background: #242424; }
     .sidebar-user { }
