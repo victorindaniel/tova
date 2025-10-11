@@ -425,8 +425,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 
 /* Left Panel Styles */
 .left-panel { width: 300px; background: #ffffff; display: flex; flex-direction: column; overflow: hidden; position: relative; z-index: 20; margin: 24px 0 24px 24px; border-radius: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.02); max-height: 100vh; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-.left-panel.collapsed { max-height: 71px; }
-.panel-header { padding: 20px 24px 20px 32px; overflow: visible; position: relative; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+.left-panel.collapsed { max-height: 64px; }
+.panel-header { padding: 16px 24px 16px 32px; overflow: visible; position: relative; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
 .panel-title { font-size: 16px; font-weight: 500; color: #1a1a1a; }
 .panel-collapse-btn { width: 32px; height: 32px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #7E7E7E; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0; flex-shrink: 0; border-radius: 6px; }
 .panel-collapse-btn:hover { color: #1a1a1a; background: #F5F4F2; }
@@ -1814,7 +1814,7 @@ body.dark-mode {
         color: #000;
     }
     .mobile-avatar-name {
-        padding: 12px 24px 4px 24px;
+        padding: 0px 24px 4px 24px;
         color: #000;
         font-size: 24px;
         font-weight: 600;
