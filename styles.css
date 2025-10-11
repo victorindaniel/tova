@@ -1858,7 +1858,7 @@ body.dark-mode {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 24px;
+        padding: 16px;
         border-bottom: 1px solid #EDEDED;
     }
     .mobile-menu-logo {
@@ -1890,7 +1890,7 @@ body.dark-mode {
     
     /* Mobile Menu Items */
     .mobile-menu-items {
-        padding: 24px;
+        padding: 16px;
         display: flex;
         flex-direction: column;
     }
