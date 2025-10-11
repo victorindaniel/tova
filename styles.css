@@ -1945,17 +1945,14 @@ body.dark-mode {
     
     /* Adjust chat area */
     .chat-area { 
-        padding: 0;
-        margin-left: 0 !important; 
-        display: flex;
-        flex-direction: column;
-        min-height: calc(100vh - 64px);
-        padding-top: 64px;
+        padding: 16px;
+        padding-top: 80px;
+        padding-bottom: 140px;
+        margin-left: 0 !important;
     }
     .left-panel.collapsed ~ .chat-area { margin-left: 0 !important; }
     .chat-area.chat-active { 
-        padding-bottom: 0;
-        justify-content: flex-start;
+        padding-bottom: 140px;
     }
     
     /* Welcome content centering */
@@ -1964,13 +1961,11 @@ body.dark-mode {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex: 1;
-        padding: 16px;
-        min-height: calc(100vh - 64px - 120px);
+        min-height: calc(100vh - 80px - 140px);
     }
     .chat-messages.active { 
-        padding: 16px; 
-        padding-bottom: 120px;
+        padding: 0;
+        padding-bottom: 140px;
         width: 100%;
     }
     .chat-messages { width: 100%; max-width: 100%; }
