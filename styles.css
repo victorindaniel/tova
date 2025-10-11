@@ -437,8 +437,8 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .panel-collapse-btn { width: 40px; height: 40px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #7E7E7E; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); padding: 0; flex-shrink: 0; border-radius: 6px; position: relative; }
 .panel-collapse-btn:hover { color: #1a1a1a; background: #F5F4F2; }
 .panel-header:hover .panel-collapse-btn { color: #1a1a1a; background: #F5F4F2; }
-.panel-collapse-icon-expanded { width: 24px; height: 24px; filter: brightness(0) saturate(100%) invert(59%) sepia(0%) saturate(0%) hue-rotate(189deg) brightness(90%) contrast(89%); transition: filter 0.3s; }
-.panel-collapse-icon-collapsed { width: 24px; height: 24px; filter: brightness(0) saturate(100%) invert(59%) sepia(0%) saturate(0%) hue-rotate(189deg) brightness(90%) contrast(89%); transition: filter 0.3s; display: none; }
+.panel-collapse-icon-expanded { width: 24px; height: 24px; filter: brightness(0) saturate(100%) invert(45%); transition: filter 0.3s; }
+.panel-collapse-icon-collapsed { width: 24px; height: 24px; filter: brightness(0) saturate(100%) invert(45%); transition: filter 0.3s; display: none; }
 .panel-collapse-btn:hover .panel-collapse-icon-expanded,
 .panel-header:hover .panel-collapse-icon-expanded { filter: brightness(0) saturate(100%) invert(0%); }
 .panel-collapse-btn:hover .panel-collapse-icon-collapsed,
@@ -1439,7 +1439,7 @@ body.dark-mode {
     .nav-item-sidebar.active svg { stroke: var(--text-primary); }
     .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(100%); }
     #minimizeBtn:hover .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(100%); }
-    .nav-label-collapsed { color: #fff; }
+    .nav-label-collapsed { color: #999; }
     .nav-item-sidebar.active .nav-label-collapsed { color: #fff; }
     .sidebar-divider-line { background: #242424; }
     .sidebar-user { }
@@ -1458,7 +1458,7 @@ body.dark-mode {
     .panel-collapse-btn { color: var(--text-tertiary); }
     .panel-collapse-btn:hover, .panel-header:hover .panel-collapse-btn { color: var(--text-primary); background: var(--bg-tertiary); }
     .panel-collapse-icon-expanded,
-    .panel-collapse-icon-collapsed { filter: brightness(0) saturate(100%) invert(100%); }
+    .panel-collapse-icon-collapsed { filter: brightness(0) saturate(100%) invert(45%); }
     .panel-collapse-btn:hover .panel-collapse-icon-expanded,
     .panel-header:hover .panel-collapse-icon-expanded,
     .panel-collapse-btn:hover .panel-collapse-icon-collapsed,
