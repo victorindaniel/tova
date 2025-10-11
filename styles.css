@@ -488,7 +488,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .avatar-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); padding: 8px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease; z-index: 1000; }
 .avatar-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
 .avatar-dropdown-header { padding: 12px 16px; }
-.avatar-dropdown-name { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+.avatar-dropdown-name { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
 .avatar-dropdown-plan { font-size: 12px; font-weight: 500; color: #8b5cf6; margin-bottom: 4px; }
 .avatar-dropdown-email { font-size: 13px; color: #666; }
 .avatar-dropdown-divider { height: 1px; background: #EDEDED; margin: 8px 0; }
