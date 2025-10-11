@@ -349,7 +349,7 @@ function initializeBankPopup() {
     const bankButton = document.querySelector('.top-bar-button:first-child');
     const bankSelectStep = document.getElementById('bankSelectStep');
     const accountSelectStep = document.getElementById('accountSelectStep');
-    const backToBanks = document.getElementById('backToBanks');
+    // const backToBanks = document.getElementById('backToBanks');
     const backToBanksFromBankId = document.getElementById('backToBanksFromBankId');
     const bankItems = document.querySelectorAll('.bank-item');
     const accountItems = document.querySelectorAll('.account-item');
@@ -514,42 +514,42 @@ function initializeBankPopup() {
         });
     });
     
-    // Back to banks
-    if (backToBanks) {
-        backToBanks.addEventListener('click', function() {
-            // Check which step is currently active
-            const bankBankIdStep = document.getElementById('bankBankIdStep');
-            const currentStep = bankBankIdStep.classList.contains('active') ? bankBankIdStep : accountSelectStep;
-            
-            // Animate current step out to right
-            currentStep.style.transform = 'translateX(100%)';
-            currentStep.style.opacity = '0';
-            
-            // Prepare previous step (start from left)
-            bankSelectStep.style.transform = 'translateX(-100%)';
-            bankSelectStep.style.opacity = '0';
-            
-            // After a brief moment, slide in the bank step
-            setTimeout(() => {
-                currentStep.classList.remove('active');
-                bankSelectStep.classList.add('active');
-                
-                // Reset title
-                document.getElementById('bankPopupTitle').textContent = 'Anslut konto';
-                
-                requestAnimationFrame(() => {
-                    bankSelectStep.style.transform = 'translateX(0)';
-                    bankSelectStep.style.opacity = '1';
-                });
-            }, 10);
-            
-            // Deselect accounts if coming from account selection
-            if (currentStep === accountSelectStep) {
-                accountItems.forEach(acc => acc.classList.remove('selected'));
-                connectBankButton.disabled = true;
-            }
-        });
-    }
+    // Back to banks - DISABLED (back button removed from account selection step)
+    // if (backToBanks) {
+    //     backToBanks.addEventListener('click', function() {
+    //         // Check which step is currently active
+    //         const bankBankIdStep = document.getElementById('bankBankIdStep');
+    //         const currentStep = bankBankIdStep.classList.contains('active') ? bankBankIdStep : accountSelectStep;
+    //         
+    //         // Animate current step out to right
+    //         currentStep.style.transform = 'translateX(100%)';
+    //         currentStep.style.opacity = '0';
+    //         
+    //         // Prepare previous step (start from left)
+    //         bankSelectStep.style.transform = 'translateX(-100%)';
+    //         bankSelectStep.style.opacity = '0';
+    //         
+    //         // After a brief moment, slide in the bank step
+    //         setTimeout(() => {
+    //             currentStep.classList.remove('active');
+    //             bankSelectStep.classList.add('active');
+    //             
+    //             // Reset title
+    //             document.getElementById('bankPopupTitle').textContent = 'Anslut konto';
+    //             
+    //             requestAnimationFrame(() => {
+    //                 bankSelectStep.style.transform = 'translateX(0)';
+    //                 bankSelectStep.style.opacity = '1';
+    //             });
+    //         }, 10);
+    //         
+    //         // Deselect accounts if coming from account selection
+    //         if (currentStep === accountSelectStep) {
+    //             accountItems.forEach(acc => acc.classList.remove('selected'));
+    //             connectBankButton.disabled = true;
+    //         }
+    //     });
+    // }
     
     // Back to banks from BankID step
     if (backToBanksFromBankId) {

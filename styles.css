@@ -273,7 +273,6 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .bank-logo.prima { background: #e13205; }
 .bank-logo.other { background: #F5F4F2; color: #1a1a1a; }
 .bank-name { font-size: 14px; font-weight: 500; color: #1a1a1a; }
-.bank-steps-container { min-height: 400px; }
 .bank-step { display: none; }
 .bank-step.active { display: block; }
 .bank-back { display: flex; align-items: center; gap: 8px; color: #7E7E7E; font-size: 14px; cursor: pointer; margin-bottom: 24px; transition: color 0.2s; }
@@ -324,7 +323,7 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .bank-bankid-qr svg { width: 180px; height: 180px; }
 .bank-bankid-spinner { width: 40px; height: 40px; border: 4px solid #F5F4F2; border-top-color: #1a1a1a; border-radius: 50%; animation: spin 0.8s linear infinite; }
 .bank-bankid-divider { display: flex; align-items: center; gap: 16px; margin: 32px 0 24px; }
-.bank-bankid-divider-line { flex: 1; height: 1px; background: #242424; }
+.bank-bankid-divider-line { flex: 1; height: 1px; background: #EDEDED; }
 .bank-bankid-divider-text { font-size: 14px; color: #666; }
 .bank-bankid-alternate { font-size: 14px; color: #1a1a1a; text-align: center; margin-bottom: 24px; }
 .bank-bankid-card-content { display: none; text-align: left; }
