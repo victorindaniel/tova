@@ -102,6 +102,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Reset to welcome page when clicking mobile logo
+    const mobileLogoLight = document.getElementById('mobileLogoLight');
+    const mobileLogoDark = document.getElementById('mobileLogoDark');
+    
+    function resetToWelcome() {
+        // Reset chat to default state
+        chatMessages.classList.remove('active');
+        chatMessages.innerHTML = '';
+        welcomeContent.classList.remove('hidden');
+        chatInputContainer.style.display = 'none';
+        document.querySelector('.chat-area').classList.remove('chat-active');
+        
+        // Reset input fields
+        if (textarea) {
+            textarea.value = '';
+            textarea.style.height = '51px';
+        }
+        if (textareaActive) {
+            textareaActive.value = '';
+            textareaActive.style.height = '51px';
+        }
+        if (sendButton) sendButton.disabled = true;
+        if (sendButtonActive) sendButtonActive.disabled = true;
+        
+        // Reset first message flag
+        if (typeof isFirstMessage !== 'undefined') {
+            isFirstMessage = true;
+        }
+    }
+    
+    if (mobileLogoLight) {
+        mobileLogoLight.addEventListener('click', resetToWelcome);
+    }
+    if (mobileLogoDark) {
+        mobileLogoDark.addEventListener('click', resetToWelcome);
+    }
 
     // Restore sidebar state from localStorage (default: collapsed)
     const savedSidebarState = localStorage.getItem('sidebarCollapsed');
@@ -264,6 +301,28 @@ function initializeTransferPopup() {
     // Open transfer popup
     if (transferButton) {
         transferButton.addEventListener('click', function() {
+            transferOverlay.style.display = 'flex';
+            // Reset to topup tab
+            transferSuccessView.classList.remove('active');
+            transferTabs.classList.remove('hidden');
+            document.getElementById('topupContent').classList.add('active');
+            document.getElementById('payoutContent').classList.remove('active');
+            // Reset active tab button
+            document.querySelectorAll('.transfer-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector('.transfer-tab[data-tab="topup"]').classList.add('active');
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    transferOverlay.classList.add('active');
+                });
+            });
+        });
+    }
+    
+    // Open transfer popup from deposit button
+    const depositButton = document.getElementById('depositButton');
+    if (depositButton) {
+        depositButton.addEventListener('click', function() {
             transferOverlay.style.display = 'flex';
             // Reset to topup tab
             transferSuccessView.classList.remove('active');
