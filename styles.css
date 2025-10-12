@@ -177,14 +177,16 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .sidebar-nav { display: flex; flex-direction: column; gap: 0; flex: 1; }
 .nav-item-sidebar { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; cursor: pointer; transition: all 0.2s; color: #7E7E7E; font-size: 14px; white-space: nowrap; position: relative; text-decoration: none; }
 .left-sidebar.collapsed .nav-item-sidebar { justify-content: center; padding: 12px; gap: 0; flex-direction: column; }
-.nav-item-sidebar:hover { background: #F5F4F2; }
+.nav-item-sidebar:hover { background: #F5F4F2; color: #000; }
 .nav-item-sidebar.active { background: #F5F4F2; color: #000000; font-weight: 500; }
 .nav-item-sidebar svg { flex-shrink: 0; width: 20px; height: 20px; stroke: #7E7E7E; }
+.nav-item-sidebar:hover svg { stroke: #000; }
 .nav-item-sidebar.active svg { stroke: #000000; }
 .nav-item-sidebar span { transition: opacity 0.3s ease; }
 .left-sidebar.collapsed .nav-item-sidebar span:not(.nav-tooltip):not(.nav-label-collapsed) { opacity: 0; width: 0; overflow: hidden; }
 .nav-label-collapsed { display: none; font-size: 11px; color: #7E7E7E; margin-top: 2px; text-align: center; }
 .left-sidebar.collapsed .nav-label-collapsed { display: block; opacity: 1; width: auto; overflow: visible; margin-top: -10px; }
+.nav-item-sidebar:hover .nav-label-collapsed { color: #000; }
 .nav-item-sidebar.active .nav-label-collapsed { color: #000000; }
 .nav-tooltip { position: absolute; left: calc(100% + 12px); background: #1a1a1a; color: #ffffff; padding: 8px 12px; border-radius: 8px; font-size: 13px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; z-index: 200; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); width: auto; overflow: visible; }
 .nav-tooltip::before { content: ''; position: absolute; left: -4px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-right: 4px solid #1a1a1a; }
