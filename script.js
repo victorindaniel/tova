@@ -7,6 +7,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeContent = document.getElementById('welcomeContent');
     const chatInputContainer = document.getElementById('chatInputContainer');
     
+    // iOS Keyboard handling - Prevent layout shift
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        const chatInputs = document.querySelectorAll('.chat-input');
+        const viewport = document.querySelector('meta[name=viewport]');
+        
+        chatInputs.forEach(input => {
+            // When input is focused (keyboard appears)
+            input.addEventListener('focus', function() {
+                // Prevent body scroll
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${window.scrollY}px`;
+                document.body.style.width = '100%';
+            });
+            
+            // When input loses focus (keyboard disappears)
+            input.addEventListener('blur', function() {
+                const scrollY = document.body.style.top;
+                document.body.style.position = '';
+                document.body.style.top = '';
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            });
+        });
+        
+        // Handle window resize (keyboard appearance)
+        let lastHeight = window.innerHeight;
+        window.addEventListener('resize', function() {
+            const currentHeight = window.innerHeight;
+            const topBar = document.querySelector('.top-bar');
+            
+            // Keyboard is appearing if height decreased
+            if (currentHeight < lastHeight) {
+                if (topBar) {
+                    topBar.style.position = 'fixed';
+                    topBar.style.top = '0';
+                }
+            }
+            
+            lastHeight = currentHeight;
+        });
+    }
+    
     // Randomize welcome message
     const greetings = [
         { text: 'Hur är din dag', isQuestion: true },
