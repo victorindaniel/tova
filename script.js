@@ -7,18 +7,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeContent = document.getElementById('welcomeContent');
     const chatInputContainer = document.getElementById('chatInputContainer');
     
-    // iOS Keyboard handling - Prevent layout shift
+    // iOS Keyboard handling - Prevent layout shift and keep top-bar fixed
     if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
         const chatInputs = document.querySelectorAll('.chat-input');
-        const viewport = document.querySelector('meta[name=viewport]');
+        const topBar = document.querySelector('.top-bar');
+        const chatArea = document.querySelector('.chat-area');
+        let scrollPosition = 0;
+        
+        // Ensure top-bar is always fixed
+        if (topBar) {
+            topBar.style.position = 'fixed';
+            topBar.style.top = '0';
+            topBar.style.left = '0';
+            topBar.style.right = '0';
+            topBar.style.zIndex = '10000';
+        }
         
         chatInputs.forEach(input => {
             // When input is focused (keyboard appears)
             input.addEventListener('focus', function() {
-                // Prevent body scroll
+                // Save current scroll position of chat area
+                if (chatArea) {
+                    scrollPosition = chatArea.scrollTop;
+                }
+                
+                // Ensure top-bar stays fixed
+                if (topBar) {
+                    topBar.style.position = 'fixed';
+                    topBar.style.top = '0';
+                    topBar.style.left = '0';
+                    topBar.style.right = '0';
+                    topBar.style.zIndex = '10000';
+                    topBar.style.transform = 'translateZ(0)';
+                }
+                
+                // Prevent viewport from resizing
                 document.body.style.position = 'fixed';
                 document.body.style.top = `-${window.scrollY}px`;
                 document.body.style.width = '100%';
+                document.body.style.height = '100%';
             });
             
             // When input loses focus (keyboard disappears)
@@ -26,7 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const scrollY = document.body.style.top;
                 document.body.style.position = '';
                 document.body.style.top = '';
+                document.body.style.height = '';
                 window.scrollTo(0, parseInt(scrollY || '0') * -1);
+                
+                // Restore chat area scroll
+                if (chatArea && scrollPosition) {
+                    chatArea.scrollTop = scrollPosition;
+                }
             });
         });
         
@@ -34,18 +67,25 @@ document.addEventListener('DOMContentLoaded', function() {
         let lastHeight = window.innerHeight;
         window.addEventListener('resize', function() {
             const currentHeight = window.innerHeight;
-            const topBar = document.querySelector('.top-bar');
             
-            // Keyboard is appearing if height decreased
-            if (currentHeight < lastHeight) {
-                if (topBar) {
-                    topBar.style.position = 'fixed';
-                    topBar.style.top = '0';
-                }
+            // Keyboard is appearing/disappearing
+            if (topBar) {
+                topBar.style.position = 'fixed';
+                topBar.style.top = '0';
+                topBar.style.left = '0';
+                topBar.style.right = '0';
+                topBar.style.zIndex = '10000';
             }
             
             lastHeight = currentHeight;
         });
+        
+        // Also prevent any scrolling on window
+        window.addEventListener('scroll', function(e) {
+            if (document.activeElement && document.activeElement.classList.contains('chat-input')) {
+                window.scrollTo(0, 0);
+            }
+        }, { passive: false });
     }
     
     // Randomize welcome message
