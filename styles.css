@@ -2011,10 +2011,9 @@ body.dark-mode {
     
     /* Mobile layout containment */
     html, body {
-        position: fixed;
-        overflow: hidden;
         width: 100%;
         height: 100%;
+        overflow: hidden;
     }
     
     .main-content {
@@ -2077,11 +2076,19 @@ body.dark-mode {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         height: 100vh;
+        height: 100dvh; /* Use dynamic viewport height on supported browsers */
         box-sizing: border-box;
     }
     .left-panel.collapsed ~ .chat-area { margin-left: 0 !important; }
     .chat-area.chat-active { 
         padding-bottom: 120px;
+    }
+    
+    /* Ensure chat area adjusts when keyboard is visible */
+    @supports (height: 100dvh) {
+        .chat-area {
+            height: 100dvh;
+        }
     }
     
     /* Welcome content centering */
@@ -2115,6 +2122,8 @@ body.dark-mode {
         z-index: 900;
         background: #F7F6F5;
         box-sizing: border-box;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        will-change: bottom;
     }
     .input-container.sticky {
         width: 100% !important;
@@ -2122,6 +2131,7 @@ body.dark-mode {
         position: fixed !important;
         bottom: 0 !important;
         background: #F7F6F5;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
     }
     .chat-area.chat-active .input-container { 
         position: fixed !important;
@@ -2131,6 +2141,7 @@ body.dark-mode {
         width: 100% !important;
         margin: 0 !important;
         background: #F7F6F5;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
     }
     .chat-input-wrapper { 
         max-width: 100% !important; 
@@ -2169,9 +2180,6 @@ body.dark-mode {
     .input-container::before { 
         display: none !important;
     }
-    
-    /* Hide "Insättningar" badge on mobile */
-    .analysis-badge:nth-of-type(3) { display: none; }
     
     /* Adjust modals for mobile */
     .transfer-popup, .bank-popup, .isk-popup, .podcast-popup { 

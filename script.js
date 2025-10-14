@@ -7,14 +7,84 @@ document.addEventListener('DOMContentLoaded', function() {
     const welcomeContent = document.getElementById('welcomeContent');
     const chatInputContainer = document.getElementById('chatInputContainer');
     
-    // iOS Keyboard handling - Prevent layout shift and keep top-bar fixed
+    // iOS Keyboard handling - Keep input visible when keyboard appears
     if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
         const chatInputs = document.querySelectorAll('.chat-input');
         const topBar = document.querySelector('.top-bar');
-        const chatArea = document.querySelector('.chat-area');
-        let scrollPosition = 0;
         
-        // Ensure top-bar is always fixed
+        // Use Visual Viewport API to track keyboard visibility
+        if (window.visualViewport) {
+            const viewport = window.visualViewport;
+            
+            function updateInputPosition() {
+                const inputContainers = document.querySelectorAll('.input-container');
+                const viewportHeight = viewport.height;
+                const windowHeight = window.innerHeight;
+                
+                // Check if keyboard is visible (viewport height is smaller than window height)
+                const keyboardHeight = windowHeight - viewportHeight;
+                
+                if (keyboardHeight > 100) {
+                    // Keyboard is visible - adjust input position
+                    inputContainers.forEach(container => {
+                        container.style.position = 'fixed';
+                        container.style.bottom = `${keyboardHeight + 8}px`;
+                        container.style.transition = 'bottom 0.3s ease';
+                    });
+                } else {
+                    // Keyboard is hidden - reset position
+                    inputContainers.forEach(container => {
+                        container.style.bottom = '0px';
+                    });
+                }
+            }
+            
+            // Listen for viewport changes (keyboard appearance/disappearance)
+            viewport.addEventListener('resize', updateInputPosition);
+            viewport.addEventListener('scroll', updateInputPosition);
+            
+            // Also update when input is focused
+            chatInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    setTimeout(() => {
+                        updateInputPosition();
+                        // Scroll input into view
+                        input.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                    }, 300); // Delay for keyboard animation
+                });
+                
+                input.addEventListener('blur', function() {
+                    setTimeout(updateInputPosition, 100);
+                });
+            });
+        } else {
+            // Fallback for older iOS versions
+            let lastHeight = window.innerHeight;
+            
+            window.addEventListener('resize', function() {
+                const currentHeight = window.innerHeight;
+                const heightDiff = lastHeight - currentHeight;
+                
+                if (heightDiff > 100) {
+                    // Keyboard appeared
+                    const inputContainers = document.querySelectorAll('.input-container');
+                    inputContainers.forEach(container => {
+                        container.style.position = 'fixed';
+                        container.style.bottom = `${heightDiff}px`;
+                    });
+                } else if (heightDiff < -100) {
+                    // Keyboard disappeared
+                    const inputContainers = document.querySelectorAll('.input-container');
+                    inputContainers.forEach(container => {
+                        container.style.bottom = '0px';
+                    });
+                }
+                
+                lastHeight = currentHeight;
+            });
+        }
+        
+        // Ensure top-bar stays fixed
         if (topBar) {
             topBar.style.position = 'fixed';
             topBar.style.top = '0';
@@ -22,70 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
             topBar.style.right = '0';
             topBar.style.zIndex = '10000';
         }
-        
-        chatInputs.forEach(input => {
-            // When input is focused (keyboard appears)
-            input.addEventListener('focus', function() {
-                // Save current scroll position of chat area
-                if (chatArea) {
-                    scrollPosition = chatArea.scrollTop;
-                }
-                
-                // Ensure top-bar stays fixed
-                if (topBar) {
-                    topBar.style.position = 'fixed';
-                    topBar.style.top = '0';
-                    topBar.style.left = '0';
-                    topBar.style.right = '0';
-                    topBar.style.zIndex = '10000';
-                    topBar.style.transform = 'translateZ(0)';
-                }
-                
-                // Prevent viewport from resizing
-                document.body.style.position = 'fixed';
-                document.body.style.top = `-${window.scrollY}px`;
-                document.body.style.width = '100%';
-                document.body.style.height = '100%';
-            });
-            
-            // When input loses focus (keyboard disappears)
-            input.addEventListener('blur', function() {
-                const scrollY = document.body.style.top;
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.height = '';
-                window.scrollTo(0, parseInt(scrollY || '0') * -1);
-                
-                // Restore chat area scroll
-                if (chatArea && scrollPosition) {
-                    chatArea.scrollTop = scrollPosition;
-                }
-            });
-        });
-        
-        // Handle window resize (keyboard appearance)
-        let lastHeight = window.innerHeight;
-        window.addEventListener('resize', function() {
-            const currentHeight = window.innerHeight;
-            
-            // Keyboard is appearing/disappearing
-            if (topBar) {
-                topBar.style.position = 'fixed';
-                topBar.style.top = '0';
-                topBar.style.left = '0';
-                topBar.style.right = '0';
-                topBar.style.zIndex = '10000';
-            }
-            
-            lastHeight = currentHeight;
-        });
-        
-        // Also prevent any scrolling on window
-        window.addEventListener('scroll', function(e) {
-            if (document.activeElement && document.activeElement.classList.contains('chat-input')) {
-                window.scrollTo(0, 0);
-            }
-        }, { passive: false });
     }
     
     // Randomize welcome message
@@ -1380,7 +1386,10 @@ function simulateMonthlySavingsAnalysis() {
                     titleElement.textContent = '17 aktiviteter hittade';
                     
                     // Add badges sequentially
-                    const badges = ['Fonder', 'Aktier', 'Insättningar', '+14'];
+                    // On mobile, only show first badge and "+14"
+                    const isMobile = window.innerWidth <= 768;
+                    const badges = isMobile ? ['Fonder', '+14'] : ['Fonder', 'Aktier', 'Insättningar', '+14'];
+                    
                     badges.forEach((text, index) => {
                         setTimeout(() => {
                             const badge = document.createElement('span');
