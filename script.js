@@ -270,6 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeBankPopup();
     initializeIskPopup();
     initializePodcastPopup();
+    initializePodcastPopupContinued();
     initializeAiCarousel();
     initializePackageSidebar();
     initializeProfileSidebar();
@@ -279,7 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMobileMenu();
     initializeSearch();
     initializeChat();
-    initializeLogoClick();
     initializeSections();
     initializeSecurityDropdown();
     initializeAmountInput();
@@ -952,7 +952,7 @@ function initializeBankPopup() {
 function initializeIskPopup() {
     const iskOverlay = document.getElementById('iskOverlay');
     const closeIskPopup = document.getElementById('closeIskPopup');
-    const iskButton = document.querySelectorAll('.nav-item-sidebar')[8]; // 9th item (Öppna ISK)
+    const iskButton = document.querySelectorAll('.nav-item-sidebar')[7]; // 8th item (Öppna ISK)
     const iskStep1 = document.getElementById('iskStep1');
     const iskStep2 = document.getElementById('iskStep2');
     const iskStep3 = document.getElementById('iskStep3');
@@ -984,35 +984,21 @@ function initializeIskPopup() {
     }
     
     // Open ISK popup
-    const openIskPopup = function() {
-        iskOverlay.style.display = 'flex';
-        iskCurrentStep = 1;
-        updateIskProgress();
-        if (iskStep1) iskStep1.classList.add('active');
-        if (iskStep2) iskStep2.classList.remove('active');
-        if (iskStep3) iskStep3.classList.remove('active');
-        if (iskSuccessStep) iskSuccessStep.classList.remove('active');
-        
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                iskOverlay.classList.add('active');
-            });
-        });
-    };
-    
     if (iskButton && iskOverlay) {
-        iskButton.addEventListener('click', openIskPopup);
-    }
-    
-    // Mobile menu ISK button
-    const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
-    if (mobileMenuItems.length > 0 && iskOverlay) {
-        // Find the ISK button in mobile menu by looking for "Öppna ISK" text
-        mobileMenuItems.forEach(item => {
-            const span = item.querySelector('span');
-            if (span && span.textContent.trim() === 'Öppna ISK') {
-                item.addEventListener('click', openIskPopup);
-            }
+        iskButton.addEventListener('click', function() {
+            iskOverlay.style.display = 'flex';
+            iskCurrentStep = 1;
+            updateIskProgress();
+            if (iskStep1) iskStep1.classList.add('active');
+            if (iskStep2) iskStep2.classList.remove('active');
+            if (iskStep3) iskStep3.classList.remove('active');
+            if (iskSuccessStep) iskSuccessStep.classList.remove('active');
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    iskOverlay.classList.add('active');
+                });
+            });
         });
     }
     
@@ -1222,6 +1208,13 @@ function initializePodcastPopup() {
             });
         });
     }
+}
+
+
+// Podcast popup functionality (continued)
+function initializePodcastPopupContinued() {
+    const podcastOverlay = document.getElementById('podcastOverlay');
+    const closePodcastPopup = document.getElementById('closePodcastPopup');
     
     // Close podcast popup
     const closePodcastPopupFunc = function() {
@@ -2869,61 +2862,6 @@ function initializeChat() {
                 chatArea.scrollTop = chatArea.scrollHeight;
             }
         }, 100);
-    });
-}
-
-// Logo click to return to welcome view
-function initializeLogoClick() {
-    const topBarLogos = document.querySelectorAll('.top-bar-logo');
-    const mobileLogos = document.querySelectorAll('.mobile-logo');
-    const mobileMenuLogos = document.querySelectorAll('.mobile-menu-logo-img');
-    const welcomeContent = document.getElementById('welcomeContent');
-    const chatMessages = document.getElementById('chatMessages');
-    const chatInputContainer = document.getElementById('chatInputContainer');
-    const chatArea = document.querySelector('.chat-area');
-    
-    const returnToWelcome = function() {
-        if (welcomeContent) {
-            welcomeContent.classList.remove('hidden');
-        }
-        if (chatMessages) {
-            chatMessages.classList.remove('active');
-            chatMessages.innerHTML = '';
-        }
-        if (chatInputContainer) {
-            chatInputContainer.style.display = 'none';
-        }
-        if (chatArea) {
-            chatArea.classList.remove('chat-active');
-        }
-        
-        // Close mobile menu if open
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        if (mobileMenu) {
-            mobileMenu.classList.remove('active');
-        }
-        if (mobileMenuOverlay) {
-            mobileMenuOverlay.classList.remove('active');
-        }
-    };
-    
-    // Top bar logos
-    topBarLogos.forEach(logo => {
-        logo.style.cursor = 'pointer';
-        logo.addEventListener('click', returnToWelcome);
-    });
-    
-    // Mobile header logos
-    mobileLogos.forEach(logo => {
-        logo.style.cursor = 'pointer';
-        logo.addEventListener('click', returnToWelcome);
-    });
-    
-    // Mobile menu logos
-    mobileMenuLogos.forEach(logo => {
-        logo.style.cursor = 'pointer';
-        logo.addEventListener('click', returnToWelcome);
     });
 }
 
