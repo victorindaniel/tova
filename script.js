@@ -1,4 +1,4 @@
-// Main JavaScript functionality for Tova AI React
+// Main JavaScript functionality for Tova Assistent React
 document.addEventListener('DOMContentLoaded', function() {
     const leftSidebar = document.querySelector('.left-sidebar');
     const minimizeBtn = document.getElementById('minimizeBtn');
