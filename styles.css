@@ -251,7 +251,9 @@ body { font-family: 'Neue Haas Display', 'Helvetica Neue', Helvetica, Arial, san
 .minimize-icon-expanded { width: 20px; height: 20px; filter: brightness(0) saturate(100%) invert(59%) sepia(0%) saturate(0%) hue-rotate(189deg) brightness(90%) contrast(89%); transition: filter 0.2s; flex-shrink: 0; }
 #minimizeBtn:hover .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(0%); }
 .nav-item-sidebar:hover .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(0%); }
-.minimize-icon-collapsed { display: none; }
+.minimize-icon-collapsed { display: none; width: 20px; height: 20px; filter: brightness(0) saturate(100%) invert(59%) sepia(0%) saturate(0%) hue-rotate(189deg) brightness(90%) contrast(89%); transition: filter 0.2s; flex-shrink: 0; }
+#minimizeBtn:hover .minimize-icon-collapsed { filter: brightness(0) saturate(100%) invert(0%); }
+.nav-item-sidebar:hover .minimize-icon-collapsed { filter: brightness(0) saturate(100%) invert(0%); }
 .left-sidebar.collapsed .minimize-icon-expanded { display: none; }
 .left-sidebar.collapsed .minimize-icon-collapsed { display: block; }
 
@@ -1491,6 +1493,8 @@ body.dark-mode {
     .nav-item-sidebar.active img { filter: brightness(0) saturate(100%) invert(100%); }
     .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(60%); }
     #minimizeBtn:hover .minimize-icon-expanded { filter: brightness(0) saturate(100%) invert(100%); }
+    .minimize-icon-collapsed { filter: brightness(0) saturate(100%) invert(60%); }
+    #minimizeBtn:hover .minimize-icon-collapsed { filter: brightness(0) saturate(100%) invert(100%); }
     .nav-label-collapsed { color: #999; }
     .nav-item-sidebar:hover .nav-label-collapsed { color: #fff; }
     .nav-item-sidebar.active .nav-label-collapsed { color: #fff; }
