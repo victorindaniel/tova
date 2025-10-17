@@ -952,7 +952,7 @@ function initializeBankPopup() {
 function initializeIskPopup() {
     const iskOverlay = document.getElementById('iskOverlay');
     const closeIskPopup = document.getElementById('closeIskPopup');
-    const iskButton = document.querySelectorAll('.nav-item-sidebar')[7]; // 8th item (Öppna ISK)
+    const iskButton = document.querySelectorAll('.nav-item-sidebar')[8]; // 9th item (Öppna ISK)
     const iskStep1 = document.getElementById('iskStep1');
     const iskStep2 = document.getElementById('iskStep2');
     const iskStep3 = document.getElementById('iskStep3');
